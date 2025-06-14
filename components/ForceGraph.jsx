@@ -1,15 +1,15 @@
-// import ForceGraph2D from 'react-force-graph-2d';
-import React from "react";
-import dynamic from 'next/dynamic';
+import ForceGraph2D from 'react-force-graph-2d';
+import React, {useEffect, useRef} from "react";
 
-const ForceGraph2D = dynamic(
-    () => import('react-force-graph-2d'),
-    { ssr: false }
-);
 export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
+    const fgRef = useRef(null);
+    const hoveredNode = useRef(null)
 
-
-        function dataFromBlogs(blogs) {
+    useEffect(() => {
+        fgRef.current?.d3Force('link').distance(40);
+        fgRef.current.d3Force('link').strength(0.5);
+    }, []);
+    function dataFromBlogs(blogs) {
         let nodes = []
         let links = []
 
@@ -34,7 +34,15 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
     const handleNodeClick = node => {
         // Example: Log node or trigger modal/open panel/etc.
         setActiveBlogId(node.id)
+        fgRef.current.centerAt(node.x, node.y, 500);
+        fgRef.current.zoom(10-node.val+Math.random(), 500);
     };
+
+    const handleNodeHover = (node) => {
+        hoveredNode.current = node
+    };
+
+
 
     function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
         const words = text.split(" ");
@@ -55,22 +63,24 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
         ctx.fillText(line, x, y)
     }
 
-    function nodePaint(node, color, ctx) {
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.val+3, 0, 2 * Math.PI, false);
-        ctx.fill(); // circle
+    function nodePaint(node, ctx) {
+        if (hoveredNode.current === node) {
+            ctx.fillStyle = "rgba(0,0,0,0.2)";
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, Math.sqrt(node.val || 1) * 4, 0, 2 * Math.PI, false);
+            ctx.fill(); // circle
+        }
 
         ctx.fillStyle = "#dfdcdc"
         ctx.font = '3px Sans-Serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        wrapText(ctx, node.label, node.x, node.y + node.val + 6, 50, 3)
+        wrapText(ctx, node.label, node.x, node.y + node.val+6, 50, 3)
     }
 
     // gen a number persistent color from around the palette
     const getColor = n => '#' + (
-        ([...n].reduce((acc, val, i)=> ((i === 0? acc : 0) + val.charCodeAt(0))) * 12345678)
+        ([...(n.tags[0]? n.tags[0] : "a")].reduce((acc, val, i)=> ((i === 0? acc : 0) + val.charCodeAt(0))) * 12345678)
         % Math.pow(2, 24)).toString(16).padStart(6, '0');
 
 
@@ -78,12 +88,17 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
         <ForceGraph2D
             graphData={dataFromBlogs(blogs)}
             onNodeClick={handleNodeClick}
-            // nodeLabel="label"
-            // nodeAutoColorBy="id"
+            onNodeHover={handleNodeHover}
+            autoPauseRedraw={false}
+            ref={fgRef}
             maxZoom={10}
             minZoom={1}
-            nodeCanvasObject={(node, ctx) => nodePaint(node, getColor(node.tags[0]? node.tags[0] : "a"), ctx)}
-            // nodePointerAreaPaint={nodePaint}
+            linkWidth={3}
+            nodeAutoColorBy={getColor}
+            nodeCanvasObjectMode={() => "after"}
+            nodeCanvasObject={(node, ctx) => nodePaint(node, ctx)}
+
+
         />
     );
 });

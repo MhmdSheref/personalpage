@@ -1,14 +1,13 @@
-import BlogArticle from "@/components/BlogArticle";
-export default function BlogPreview({blogs, isShown, setIsShown, activeBlogId}) {
-
-    let blog
-    blogs.forEach((blogEntry)=>{if (blogEntry.id === activeBlogId) blog=blogEntry})
+import Markdown from "react-markdown";
+export default function BlogArticle({blog}) {
 
     return (
-        <div className={`BlogPreview ${isShown? "shown" : ""}`}>
-            <button onClick={()=>{setIsShown(!isShown)}}>X</button>
-            <BlogArticle blog={blog}/>
-        </div>
+            <article>
+                <h1>{blog.title}</h1>
+                <Markdown>
+                    {blog.content}
+                </Markdown>
+            </article>
 
     );
 }

@@ -7,7 +7,7 @@ body, html {
 
 /*----header----*/
 header {
-  position: absolute;
+  position: sticky;
   height: 60px;
   background: #363636;
   width: 100%;
@@ -50,10 +50,6 @@ header {
 
 
 /*----main content----*/
-main {
-  padding-top: 60px;
-}
-
 
 /*----Left Sidebar, sliding preview, OFF----*/
 .BlogPreview {
@@ -79,7 +75,7 @@ main {
   padding: 25px;
 }
 
-.BlogPreview>article>button {
+.BlogPreview>button {
   transition: right ease-in-out 0.5s;
   position: absolute;
   background: #363636;
@@ -88,13 +84,14 @@ main {
   height: 2.5rem;
   width: 2.5rem;
   border: none;
+  margin-top: 25px;
   right: -60px;
   cursor: pointer;
 }
 
 
 /*----button hover effect----*/
-.BlogPreview>article>button:hover {
+.BlogPreview>button:hover {
   filter: brightness(90%);
 }
 
@@ -103,7 +100,7 @@ main {
   left: 0;
 }
 
-.BlogPreview.shown>article>button {
+.BlogPreview.shown>button {
   right: 20px;
 }
 

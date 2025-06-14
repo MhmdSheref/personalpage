@@ -15,7 +15,6 @@ export default function Sidebar({blogs, setActiveBlogId}) {
                     />
                 )))}
             </div>
-
         </aside>
     );
 }

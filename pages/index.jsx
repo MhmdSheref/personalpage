@@ -1,4 +1,3 @@
-import Header from "@/components/Header.jsx";
 import BlogPreview from "@/components/BlogPreview.jsx"
 import ForceGraph from "@/components/ForceGraph.jsx";
 import Sidebar from "@/components/Sidebar.jsx"
@@ -18,7 +17,6 @@ export default function App() {
     return (
         <>
             <Head><title>Sheref's Mind Palace</title></Head>
-            <Header/>
             <main>
                 <BlogPreview activeBlogId={activeBlogId} isShown={previewShown} setIsShown={setPreviewShown} blogs={blogs}/>
                 <ForceGraph blogs={blogs} setActiveBlogId={handleActiveBlogId}/>

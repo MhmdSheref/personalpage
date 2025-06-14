@@ -1,13 +1,11 @@
-import BlogArticle from "@/components/BlogArticle";
+import DynamicBlogArticle from "@/components/DynamicBlogArticle";
 export default function BlogPreview({blogs, isShown, setIsShown, activeBlogId}) {
 
-    let blog
-    blogs.forEach((blogEntry)=>{if (blogEntry.id === activeBlogId) blog=blogEntry})
-
+    const blog = blogs.find((blog) => blog.id === activeBlogId);
     return (
         <div className={`BlogPreview ${isShown? "shown" : ""}`}>
             <button onClick={()=>{setIsShown(!isShown)}}>X</button>
-            <BlogArticle blog={blog}/>
+            <DynamicBlogArticle blog={blog}/>
         </div>
 
     );
@@ -20,6 +18,5 @@ export default function BlogPreview({blogs, isShown, setIsShown, activeBlogId}) 
 //     date:"10/5/2025",
 //     tags:["tag1","tag2"],
 //     images:[],
-//     content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid consectetur dicta eos eum fugiat fugit incidunt itaque iure maxime nemo neque nesciunt odio possimus repellendus, similique, voluptatum! Quam, voluptate.",
 //     links: [],
 // },

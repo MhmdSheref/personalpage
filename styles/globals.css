@@ -57,10 +57,10 @@ header {
   background: rgba(38, 38, 38, 0.9);
   backdrop-filter: blur(5px);
   position: absolute;
-  width: 50%;
+  width: 40%;
   height: 100%;
   top: 0;
-  left: -50%;
+  left: -40%;
   border-right: 3px solid #363636;
   z-index: 1;
   box-shadow: #191919 1px 0 5px;
@@ -75,6 +75,10 @@ header {
   padding: 25px;
 }
 
+.BlogPreview>article>.MainTitle {
+  margin-right: 60px;
+}
+
 .BlogPreview>button {
   transition: right ease-in-out 0.5s;
   position: absolute;
@@ -87,6 +91,44 @@ header {
   margin-top: 25px;
   right: -60px;
   cursor: pointer;
+}
+
+
+/*----General Article Styling----*/
+
+.ArticleHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  width: fit-content;
+}
+
+.tags>span {
+  color: mediumpurple;
+  background: rgba(102, 51, 153, 0.3);
+  border: 2px solid rgba(102, 51, 153, 0.5);
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+
+table {
+  padding: 5px;
+}
+
+tr, td, th {
+  background: #262626;
+  padding: 5px;
+  border: 1px solid #363636;
+
+}
+
+th {
+  background: #1e1e1e;
 }
 
 
@@ -109,7 +151,7 @@ div:has(>.force-graph-container) {
   overflow: hidden;
   display: flex;
   justify-content: center;
-  width: 80%;
+  /*width: 80%;*/
   height: 100%;
   margin-top: -60px;
 
@@ -163,7 +205,7 @@ div:has(>.force-graph-container) {
   overflow: hidden;
 }
 
-.SidebarEntry>time {
+time {
   color: #a9a9a9;
   padding: 5px;
 }
@@ -178,6 +220,9 @@ div:has(>.force-graph-container) {
     width: 100%;
     left: -100%;
   }
+  .Sidebar {
+    display: none;
+  }
 }
 
 
@@ -185,3 +230,4 @@ div:has(>.force-graph-container) {
 p>img {
   width: 400px;
 }
+

@@ -62,10 +62,10 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
         ctx.fill(); // circle
 
         ctx.fillStyle = "#dfdcdc"
-        ctx.font = '4px Sans-Serif';
+        ctx.font = '3px Sans-Serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        wrapText(ctx, node.label, node.x, node.y + node.val + 6, 70, 4)
+        wrapText(ctx, node.label, node.x, node.y + node.val + 6, 50, 3)
     }
 
     // gen a number persistent color from around the palette

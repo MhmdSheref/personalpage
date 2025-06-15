@@ -67,7 +67,7 @@ export default function PythonPlayground() {
     async function handleInput(output) {
         handleOutput(output? output : "")
         const input = await handleSubmit(refInput.current);
-        handleOutput( + input + "\n")
+        handleOutput( input + "\n")
         refInput.current.value = "";
         return input
 

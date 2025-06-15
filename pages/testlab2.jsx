@@ -13,7 +13,8 @@ export default function jsPlayground () {
                 <SandpackCodeEditor showLineNumbers />
                 <SandpackPreview />
             </SandpackLayout>
-        </SandpackProvider>    )
+        </SandpackProvider>
+    )
 
 }
 

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { python } from '@codemirror/lang-python';
 import {EditorView} from "@codemirror/view";
-
 export default function PythonPlayground() {
     const [pyodide, setPyodide] = useState(null);
     const [output, setOutput] = useState('');
@@ -69,7 +68,7 @@ export default function PythonPlayground() {
                     highlightActiveLine: true,
                     highlightActiveLineGutter: true,
                 }}
-                onChange={(e) => setCode(e.target.value)}
+                onChange={(e) => setCode(e)}
             />
             <button onClick={runCode} className="mt-2 bg-blue-600 text-white px-4 py-2 rounded">
                 Run Python

@@ -111,8 +111,8 @@ export default function PythonPlayground() {
                     <span className={styles.consoleInput}><input ref={refInput}/></span>
                 </div>
             </div>
-            <button onClick={runCode}>
-                Run Python
+            <button onClick={runCode} disabled={!pyodide}>
+                {pyodide? "Run Python": "Loading..."}
             </button>
             <button onClick={() => setOutput("")}>
                 Clear Console

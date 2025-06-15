@@ -5,6 +5,7 @@ import path from 'path'
 import fs from 'fs'
 import { serialize } from 'next-mdx-remote/serialize'
 import remarkGfm from 'remark-gfm'
+import Head from "next/head";
 
 
 export const getStaticPaths = async () => {
@@ -45,7 +46,34 @@ export const getStaticProps = async ({ params }) => {
 export default function Blog({blog}) {
     return (
         <div className={styles.container}>
+            <Head>
+                <title>Sheref's Mind Palace | {blog.title}</title>
+                <meta property="og:title" content={blog.title} />
+                <meta property="og:description" content={"none for now"} />
+                <meta property="og:url" content="https://mhmdsheref.vercel.app/" />
+                <meta property="og:type" content="website" />
+
+                {
+                    blog.images.length > 0 &&
+                    <>
+                        <meta property="og:image" content={blog.images[0]} />
+                        {/*<meta property="og:image:width" content="1200" />*/}
+                        {/*<meta property="og:image:height" content="630" />*/}
+                    </>
+
+                }
+            </Head>
+
             <BlogArticle blog={blog}/>
         </div>
     );
 }
+
+// {
+//     id:4,
+//     title:"This is a sample post 4",
+//     date:"10/5/2025",
+//     tags:["tag1","tag2"],
+//     images:[],
+//     links: [],
+// },

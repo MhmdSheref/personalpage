@@ -6,8 +6,8 @@ import BlogArticle from "@/components/BlogArticle";
 
 export default function DynamicBlogArticle({ blog }) {
     const [mdxContent, setMdxContent] = useState(null);
-
     useEffect(() => {
+        setMdxContent(null)
         const loadMdx = async () => {
             if (blog.content?.compiledSource) {
                 setMdxContent(blog.content);
@@ -27,7 +27,7 @@ export default function DynamicBlogArticle({ blog }) {
         loadMdx();
     }, [blog]);
 
-    if (!mdxContent) return <div>Loading article...</div>;
+    if (!mdxContent) return <article><h1 style={{color:"#a9a9a9"}}>Loading article...</h1></article>;
 
     return (
         <BlogArticle blog={{...blog, content:mdxContent}}/>

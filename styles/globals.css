@@ -30,6 +30,7 @@ header {
 .header-content>nav {
   display: flex;
   width: 30%;
+  min-width: 210px;
   height: 100%;
 }
 

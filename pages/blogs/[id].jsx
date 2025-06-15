@@ -32,24 +32,27 @@ export const getStaticProps = async ({ params }) => {
             remarkPlugins: [remarkGfm],
         },
     })
-
     return {
         props: {
             blog: {
                 ...blog,
                 content: mdxSource, // compiled MDX
+                plaintext: source
             },
         },
     }
 };
 
 export default function Blog({blog}) {
+
     return (
+
         <div className={styles.container}>
             <Head>
                 <title>Sheref's Mind Palace | {blog.title}</title>
+                <meta property="og:site_name" content="Sheref's Mind Palace" />
                 <meta property="og:title" content={blog.title} />
-                <meta property="og:description" content={"none for now"} />
+                <meta property="og:description" content={blog.plaintext} />
                 <meta property="og:url" content="https://mhmdsheref.vercel.app/" />
                 <meta property="og:type" content="website" />
 

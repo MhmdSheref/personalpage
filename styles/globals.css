@@ -156,6 +156,7 @@ div:has(>.force-graph-container) {
   border-radius: 5px;
   /*overflow: hidden;*/
   cursor: pointer;
+  line-height: 1.25rem;
 }
 
 .SidebarEntry>img {

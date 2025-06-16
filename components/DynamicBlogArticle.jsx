@@ -14,12 +14,21 @@ export default function DynamicBlogArticle({ blog }) {
             } else if (blog.id) {
                 const res = await fetch(`/mdx/${blog.id}.mdx`);
                 const raw = await res.text();
+                const rawArr = raw.split("\n")
+                let previewArr = []
 
-                const compiled = await serialize(raw, {
+                for (let i = 0; i < rawArr.length; i++) {
+                    previewArr.push(rawArr[i])
+                    if (rawArr[i].length >= 100) break
+                }
+                const preview = previewArr.join("\n")
+
+                const compiled = await serialize(preview, {
                     mdxOptions: {
                         remarkPlugins: [remarkGfm],
                     },
                 });
+
 
                 setMdxContent(compiled);
             }

@@ -6,8 +6,8 @@ export default function Header() {
             <span>Welcome to my website</span>
             <nav>
                 <Link href="/"><span>Home</span></Link>
-                <Link href=""><span>Lab</span></Link>
-                <Link href=""><span>Socials</span></Link>
+                <Link href="/lab"><span>Lab</span></Link>
+                <Link href="/"><span>Socials</span></Link>
 
             </nav>
             </div>

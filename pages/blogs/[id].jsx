@@ -60,7 +60,7 @@ export default function Blog({blog}) {
             }
         }))
         setAllLinks(allLinks)
-    }, []);
+    }, [blog]);
 
     return (
 

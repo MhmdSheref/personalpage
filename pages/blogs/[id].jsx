@@ -66,7 +66,7 @@ export default function Blog({blog}) {
 
         <div className={styles.container}>
             <Head>
-                <title>{`${blog.title} | Sheref's Mind Palace`}</title>
+                <title>{`${blog.title} | Mohamed Sheref`}</title>
                 <meta property="og:site_name" content="Sheref's Mind Palace" />
                 <meta property="og:title" content={blog.title} />
                 <meta property="og:description" content={blog.plaintext} />

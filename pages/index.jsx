@@ -25,7 +25,7 @@ export default function App() {
     return (
         <>
             <Head>
-                <title>Sheref's Mind Palace</title>
+                <title>Mohamed Sheref</title>
                 <meta
                     name="description"
                     content={`Hi, I'm Mohamed Sheref, also known online as "MhmdSheref" or "Sheref"

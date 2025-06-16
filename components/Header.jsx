@@ -7,17 +7,17 @@ const firaCode = Fira_Code({
 })
 export default function Header() {
     return (
-        <header>
-            <div className='header-content'>
-            <span className={styles.Label}>
-                <span className={styles.Name}>Mohamed Sheref</span>
-                <span className={styles.Comment + " " + firaCode.className}>//Undefined but not Null</span>
-            </span>
-                <nav>
-                <Link href="/"><span>Home</span></Link>
-                <Link href="/lab"><span>Lab</span></Link>
-                <Link href="/"><span>Socials</span></Link>
-            </nav>
+        <header className={styles.Header}>
+            <div className={styles.HeaderContent}>
+                <span className={styles.Label}>
+                    <span className={styles.Name}>Mohamed Sheref</span>
+                    <span className={styles.Comment + " " + firaCode.className}>//Undefined but not Null</span>
+                </span>
+                <nav className={styles.Nav}>
+                    <Link href="/"><span>Home</span></Link>
+                    <Link href="/lab"><span>Lab</span></Link>
+                    <Link href="/"><span>Socials</span></Link>
+                </nav>
             </div>
         </header>
     )

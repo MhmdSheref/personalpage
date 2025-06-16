@@ -15,60 +15,6 @@ a:hover {
   box-shadow: inset 0 -1.25em 0 0 mediumpurple;
 }
 
-/*----header----*/
-header {
-  position: sticky;
-  height: 60px;
-  background: #363636;
-  width: 100%;
-  z-index: 2;
-}
-
-.header-content {
-  display: flex;
-  height: 100%;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1750px;
-  margin: auto;
-}
-
-
-.header-content>nav {
-  display: flex;
-  width: 30%;
-  min-width: 210px;
-  height: 100%;
-}
-
-.header-content>nav>a {
-  font-size: 1.2rem;
-  display: flex;
-  border-bottom: none;
-  box-shadow: none;
-  color: #dfdcdc;
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.header-content>nav>a:hover {
-  filter: brightness(95%);
-  backdrop-filter: brightness(95%);
-}
-
-.header-content>nav>a:active {
-  filter: brightness(90%);
-  backdrop-filter: brightness(90%);
-}
-
-
-/*----main content----*/
-
-
-
 /*----General Article Styling----*/
 
 .ArticleHead {

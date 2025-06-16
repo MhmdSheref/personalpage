@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import Layout from "@/components/Layout";
+import Head from "next/head";
 import {Literata} from "next/font/google";
 
 const literata = Literata({
@@ -11,5 +12,16 @@ const literata = Literata({
 
 
 export default function App({ Component, pageProps }) {
-  return <main className={literata.className}><Layout><Component {...pageProps} /></Layout></main>;
+  return (
+      <>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
+        <main className={literata.className}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </main>
+      </>
+  );
 }

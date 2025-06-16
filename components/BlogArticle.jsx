@@ -1,6 +1,7 @@
 import { MDXRemote } from "next-mdx-remote"
 import CodeWindow from "@/components/CodeWindow"
 import Tags from "@/components/Tags";
+import Image from "next/image";
 
 
 export default function BlogArticle({ blog }) {
@@ -11,7 +12,17 @@ export default function BlogArticle({ blog }) {
                 <Tags tags={blog.tags}/>
                 <time>{blog.date}</time>
             </div>
-            <MDXRemote {...blog.content} components={{ CodeWindow }} />
+            <MDXRemote {...blog.content} components={{
+                CodeWindow,
+                img: (props) => (
+                    <Image
+                        {...props}
+                        alt={props.alt || ""}
+                        width={props.width || 800}
+                        height={props.height || 400}
+                        style={{ maxWidth: "100%", height: "auto" }}
+                    />
+                ),}} />
         </article>
     )
 }

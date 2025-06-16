@@ -88,8 +88,8 @@ export default function Blog({blog}) {
             <BlogArticle blog={blog}/>
             {allLinks ?
                 <nav>
+                    Related:
                     <ul>
-                        Related:
                         {allLinks.map(link => (
                             <li key={link.id}>
                                 <Link href={`/blogs/${link.id}`}>

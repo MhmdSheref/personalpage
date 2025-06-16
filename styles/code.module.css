@@ -6,15 +6,15 @@
 
 .console {
     background: #191919;
-    font-family: monospace;
+    font-size: 0.9rem;
     white-space: pre-wrap;
     padding: 0 10px;
     overflow-y: auto;
     height: 300px;
-
 }
 
 .consoleInput {
+    font-family: inherit;
     width: 100%;
     display: flex;
 }
@@ -23,7 +23,7 @@
     flex-grow: 1;
     border: none;
     background: transparent;
-    color: white;
+    color: #dfdcdc;
     font-family: inherit;
 }
 

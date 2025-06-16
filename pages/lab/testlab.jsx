@@ -3,6 +3,11 @@ import CodeMirror from '@uiw/react-codemirror';
 import { python } from '@codemirror/lang-python';
 import {EditorView} from "@codemirror/view";
 import styles from "@/styles/code.module.css"
+import {Fira_Code} from "next/font/google";
+
+const firaCode = Fira_Code({
+    subsets: ['latin'],
+})
 export default function PythonPlayground() {
     const [pyodide, setPyodide] = useState(null);
     const [output, setOutput] = useState('');
@@ -106,7 +111,7 @@ export default function PythonPlayground() {
                     }}
                     onChange={(e) => setCode(e)}
                 />
-                <div className={styles.console}>
+                <div className={styles.console + " " + firaCode.className}>
                     {output}
                     <span className={styles.consoleInput}><input ref={refInput}/></span>
                 </div>

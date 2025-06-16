@@ -3,8 +3,8 @@ import Sidebar from "@/components/Sidebar.jsx"
 import {blogs} from "@/blogs";
 import {useState, useCallback} from "react";
 import Head from "next/head"
-
 import dynamic from 'next/dynamic';
+
 
 const ForceGraph = dynamic(
     () => import('@/components/ForceGraph'),
@@ -32,12 +32,10 @@ export default function App() {
                      I am an engineering student at Cairo University, and this is my personal blog page
                      where I document all kinds of thoughts and experiments, with interactive labs when possible.`}/>
             </Head>
-            <main>
-                <BlogPreview activeBlogId={activeBlogId} isShown={previewShown} setIsShown={setPreviewShown}
-                             blogs={blogs}/>
-                <ForceGraph blogs={blogs} setActiveBlogId={handleActiveBlogId}/>
-                <Sidebar blogs={blogs} setActiveBlogId={handleActiveBlogId}/>
-            </main>
+            <BlogPreview activeBlogId={activeBlogId} isShown={previewShown} setIsShown={setPreviewShown}
+                         blogs={blogs}/>
+            <ForceGraph blogs={blogs} setActiveBlogId={handleActiveBlogId}/>
+            <Sidebar blogs={blogs} setActiveBlogId={handleActiveBlogId}/>
         </>
     )
 }

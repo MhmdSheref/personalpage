@@ -32,7 +32,6 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
         return {nodes, links}
     }
     const handleNodeClick = node => {
-        // Example: Log node or trigger modal/open panel/etc.
         setActiveBlogId(node.id)
         fgRef.current.centerAt(node.x, node.y, 500);
         fgRef.current.zoom(10-node.val+Math.random(), 500);
@@ -72,7 +71,7 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
         }
 
         ctx.fillStyle = "#dfdcdc"
-        ctx.font = '3px Sans-Serif';
+        ctx.font = '3px Literata';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         wrapText(ctx, node.label, node.x, node.y + node.val+6, 50, 3)

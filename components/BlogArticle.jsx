@@ -1,5 +1,6 @@
 import { MDXRemote } from "next-mdx-remote"
 import CodeWindow from "@/components/CodeWindow"
+import Tags from "@/components/Tags";
 
 
 export default function BlogArticle({ blog }) {
@@ -7,7 +8,7 @@ export default function BlogArticle({ blog }) {
         <article>
             <h1 className="MainTitle">{blog.title}</h1>
             <div className="ArticleHead">
-                <div className="tags">{blog.tags.map(tag=>(<span key={tag}>#{tag}</span>))}</div>
+                <Tags tags={blog.tags}/>
                 <time>{blog.date}</time>
             </div>
             <MDXRemote {...blog.content} components={{ CodeWindow }} />

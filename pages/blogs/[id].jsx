@@ -6,6 +6,8 @@ import fs from 'fs'
 import { serialize } from 'next-mdx-remote/serialize'
 import remarkGfm from 'remark-gfm'
 import Head from "next/head";
+import Link from "next/link";
+import {useEffect, useState} from "react";
 
 
 export const getStaticPaths = async () => {
@@ -45,16 +47,33 @@ export const getStaticProps = async ({ params }) => {
 
 export default function Blog({blog}) {
 
+    const [allLinks, setAllLinks] = useState([])
+
+    useEffect(() => {
+        let allLinks = [];
+        blogs.forEach((searchBlog => {
+            if (searchBlog.links.includes(blog.id)) {
+                allLinks.push({title: searchBlog.title, id:searchBlog.id})
+            }
+            if (blog.links.includes(searchBlog.id)) {
+                allLinks.push({title: searchBlog.title, id:searchBlog.id})
+            }
+        }))
+        setAllLinks(allLinks)
+    }, []);
+
     return (
 
         <div className={styles.container}>
             <Head>
-                <title>Sheref's Mind Palace | {blog.title}</title>
+                <title>{`${blog.title} | Sheref's Mind Palace`}</title>
                 <meta property="og:site_name" content="Sheref's Mind Palace" />
                 <meta property="og:title" content={blog.title} />
                 <meta property="og:description" content={blog.plaintext} />
                 <meta property="og:url" content="https://mhmdsheref.vercel.app/" />
                 <meta property="og:type" content="website" />
+
+                <meta name="description" content={blog.plaintext}/>
 
                 {
                     blog.images.length > 0 &&
@@ -66,8 +85,22 @@ export default function Blog({blog}) {
 
                 }
             </Head>
-
             <BlogArticle blog={blog}/>
+            {allLinks ?
+                <nav>
+                    <ul>
+                        Related:
+                        {allLinks.map(link => (
+                            <li key={link.id}>
+                                <Link href={`/blogs/${link.id}`}>
+                                    {link.title}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+
+                </nav> : null}
+
         </div>
     );
 }

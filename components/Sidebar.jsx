@@ -7,10 +7,7 @@ export default function Sidebar({blogs, setActiveBlogId}) {
                 {blogs.map((blogEntry => (
                     <SidebarEntry
                         key={blogEntry.id}
-                        id={blogEntry.id}
-                        img={{src:blogEntry.images[0], alt:""}}
-                        text={blogEntry.title}
-                        date={blogEntry.date}
+                        blog = {blogEntry}
                         setActiveBlogId={setActiveBlogId}
                     />
                 )))}

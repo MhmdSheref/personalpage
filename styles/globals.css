@@ -5,6 +5,16 @@ body, html {
   font-family: sans-serif;
 }
 
+a {
+  color: mediumpurple;
+  text-decoration: none;
+  border-bottom: 2px solid mediumpurple;
+}
+
+a:hover {
+  color: #dfdcdc;
+  box-shadow: inset 0 -1.25em 0 0 mediumpurple;
+}
 
 /*----header----*/
 header {
@@ -37,6 +47,8 @@ header {
 
 .header-content>nav>a {
   display: flex;
+  border-bottom: none;
+  box-shadow: none;
   color: #dfdcdc;
   text-decoration: none;
   justify-content: center;
@@ -69,16 +81,18 @@ header {
 
 .tags {
   display: flex;
-  gap: 10px;
-  width: fit-content;
+  gap: 5px;
+  max-width: fit-content;
+  align-items: center;
+  text-wrap: nowrap;
 }
 
 .tags>span {
   color: mediumpurple;
   background: rgba(102, 51, 153, 0.3);
-  border: 2px solid rgba(102, 51, 153, 0.5);
-  border-radius: 10px;
-  padding: 5px 15px;
+  /*border: 2px solid rgba(102, 51, 153, 0.5);*/
+  border-radius: 1000px;
+  padding: 5px 10px;
 }
 
 
@@ -113,7 +127,7 @@ div:has(>.force-graph-container) {
 .Sidebar {
   background: #262626;
   padding-top: 65px;
-  min-width: 300px;
+  min-width: 350px;
   width: 21%;
   position: absolute;
   height: 100%;
@@ -130,31 +144,54 @@ div:has(>.force-graph-container) {
 }
 
 .SidebarEntry {
+  height: 6.1rem;
   color: inherit;
   text-decoration: none;
   background: #363636;
-  display: flex;
+  display: grid;
+  grid-template:
+"img text text" 1fr
+"img text text" 1fr
+"img tags date" 1fr / auto auto 1fr;
   margin: 25px 0;
   align-items: center;
   justify-content: space-between;
   border-radius: 5px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   cursor: pointer;
 }
 
 .SidebarEntry>img {
-  height: 5rem;
+  height: inherit;
+  width: 6.1rem;
+  object-fit: cover;
+  grid-area: img;
+  margin: 0 10px 0 0;
+
 }
 
 .SidebarEntry>p {
-  margin: 0 0 0 10px;
+  grid-area: text;
   display: -webkit-box;
   display: -moz-box;
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
-  line-clamp: 4;
-  -webkit-line-clamp: 4;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
   overflow: hidden;
+}
+
+.SidebarEntry>time {
+  grid-area: date;
+  justify-self: right;
+  padding-right: 15px;
+}
+
+.SidebarEntry>.tags {
+  grid-area: tags;
+  justify-self: left;
+  width: 100%;
+  overflow-x: auto;
 }
 
 time {

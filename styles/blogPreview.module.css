@@ -67,6 +67,7 @@
 }
 
 .callToAction {
+    border-bottom: none;
     background: #663399;
     font-weight: bold;
     color: #dfdcdc;
@@ -77,6 +78,7 @@
 }
 
 .callToAction:hover {
+    box-shadow: none;
     filter: brightness(90%);
     backdrop-filter: brightness(90%);
 }

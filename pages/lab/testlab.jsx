@@ -49,7 +49,7 @@ export default function PythonPlayground() {
         try {
             pyodide.runPythonAsync(code);
         } catch (err) {
-            console.log(err.message)
+            console.warn(err.message)
             handleOutput(err.message);
         }
     };

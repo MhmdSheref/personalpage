@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
 import BlogArticle from "@/components/BlogArticle";
+import matter from "gray-matter";
 
 
-export default function DynamicBlogArticle({ blog }) {
+export default function DynamicBlogArticle({ blog , isPreview }) {
     const [mdxContent, setMdxContent] = useState(null);
     useEffect(() => {
         setMdxContent(null)
@@ -14,14 +15,23 @@ export default function DynamicBlogArticle({ blog }) {
             } else if (blog.id) {
                 const res = await fetch(`/mdx/${blog.id}.mdx`);
                 const raw = await res.text();
-                const rawArr = raw.split("\n")
-                let previewArr = []
+                const {  content } = matter(raw);
 
-                for (let i = 0; i < rawArr.length; i++) {
-                    previewArr.push(rawArr[i])
-                    if (rawArr[i].length >= 100) break
+
+                let preview
+                if (isPreview) {
+                    const contentArr = content.split("\n")
+                    let previewArr = []
+
+                    for (let i = 0; i < contentArr.length; i++) {
+                        previewArr.push(contentArr[i])
+                        if (contentArr[i].length >= 100) break
+                    }
+
+                    preview = previewArr.join("\n")
                 }
-                const preview = previewArr.join("\n")
+                else preview = content
+
 
                 const compiled = await serialize(preview, {
                     mdxOptions: {
@@ -54,3 +64,15 @@ export default function DynamicBlogArticle({ blog }) {
 //     images:[],
 //     links: [],
 // },
+
+// import BlogArticle from "@/components/BlogArticle";
+//
+// export default function DynamicBlogArticle({ blog }) {
+//     if (!blog?.content) {
+//         return <article><h1 style={{ color: "#a9a9a9" }}>Missing article content</h1></article>;
+//     }
+//
+//     return (
+//         <BlogArticle blog={blog} />
+//     );
+// }

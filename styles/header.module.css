@@ -1,10 +1,12 @@
 /*----header----*/
 .Header {
-    position: sticky;
+    position: fixed;
     height: 60px;
+    top: 0;
     background: #363636;
     width: 100%;
     z-index: 2;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1);
 }
 
 .HeaderContent {
@@ -25,6 +27,7 @@
 
 .Name {
     font-size: 1.4rem;
+    text-wrap: nowrap;
 }
 
 .Comment {
@@ -33,6 +36,7 @@
     font-family: monospace;
     font-size: 1rem;
     color: #7a7e85;
+    text-wrap: nowrap;
 }
 
 .Nav {
@@ -65,9 +69,65 @@
     backdrop-filter: brightness(90%);
 }
 
-@media screen and (max-width: 480px) {
+.HamMenu {
+    display: none;
+
+}
+
+@media screen and (max-width: 720px) {
+    .HamMenu {
+        display: flex;
+    }
+
+    .HamMenu:hover {
+        filter: brightness(95%);
+        backdrop-filter: brightness(95%);
+    }
+
+    .HamMenu:active {
+        filter: brightness(90%);
+        backdrop-filter: brightness(90%);
+    }
+
+
+
     .Nav {
         display: none;
     }
+
+    .Open {
+        background: #262626;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+    .Label {
+        padding: 0 10px;
+
+    }
+
+
+
+}
+
+@media screen and (max-width: 529px) {
+    .Header {
+        height: 100px;
+    }
+    .Label {
+        flex-wrap: wrap;
+    }
+    .Open {
+        width: 100%;
+        top: 100px;
+        border-bottom: 3px solid #1e1e1e;
+    }
+
 }
 

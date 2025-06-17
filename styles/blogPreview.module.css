@@ -18,7 +18,7 @@
 @media screen and (max-width: 720px) {
     .BlogPreview {
         width: 100%;
-        left: -100%;
+        left: calc(-100% + 3px);
     }
 }
 
@@ -87,4 +87,11 @@
     filter: brightness(80%);
     backdrop-filter: brightness(80%);
 }
+
+@media screen and (max-width: 529px) {
+    .BlogPreview>button {
+        margin-top: 65px;
+    }
+}
+
 

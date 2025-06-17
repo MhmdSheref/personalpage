@@ -4,6 +4,18 @@ body, html {
   background: #1e1e1e;
 }
 
+.AllContent {
+  margin-top: 60px;
+}
+
+@media screen and (max-width: 529px) {
+  .AllContent {
+    margin-top: 100px;
+  }
+
+}
+
+
 a {
   color: mediumpurple;
   text-decoration: none;
@@ -38,9 +50,15 @@ a:hover {
   padding: 5px 10px;
 }
 
+.TableContainer {
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+}
 
 table {
   padding: 5px;
+  border-collapse: collapse;
 }
 
 tr, td, th {
@@ -103,6 +121,16 @@ div:has(>.force-graph-container) {
   /*overflow: hidden;*/
   cursor: pointer;
   line-height: 1.25rem;
+  box-shadow:
+          0 0 3px 1px #1e1e1e,
+          inset 0 -3em 3em rgba(0, 0, 0, 0.1);
+}
+
+.new {
+  box-shadow:
+          0 0 0 1px mediumpurple,
+          0 0 3px 1px #1e1e1e,
+          inset 0 -3em 3em rgba(0, 0, 0, 0.1);
 }
 
 .SidebarEntry>img {

@@ -22,7 +22,12 @@ export default function BlogArticle({ blog }) {
                         height={props.height || 400}
                         style={{ maxWidth: "100%", height: "auto" }}
                     />
-                ),}} />
+                ),
+                table: ({children}) => (
+                    <div className="TableContainer"><table>{children}</table></div>
+                ),
+
+            }} />
         </article>
     )
 }

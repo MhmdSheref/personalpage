@@ -3,7 +3,7 @@ export default function Layout({children}) {
     return (
         <>
             <Header/>
-            {children}
+            <div className="AllContent">{children}</div>
         </>
     )
 

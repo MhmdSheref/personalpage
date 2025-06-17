@@ -2,14 +2,13 @@ import DynamicBlogArticle from "@/components/DynamicBlogArticle";
 import Link from "next/link";
 import styles from "@/styles/blogPreview.module.css"
 export default function BlogPreview({blogs, isShown, setIsShown, activeBlogId}) {
-
     const blog = blogs.find((blog) => blog.id === activeBlogId);
     return (
         <div className={styles.BlogPreview + " " + (isShown? styles.shown : "")}>
             <button onClick={()=>{setIsShown(!isShown)}}><img alt="arrow" src="/arrow.svg"/></button>
             <div className={styles.content}>
                 <DynamicBlogArticle blog={blog}/>
-                <Link className={styles.callToAction} href={`/blogs/${blog.id}`}>Continue Reading Here →</Link>
+                <Link className={styles.callToAction} href={`/blogs/${blog.id}`}>Original Blog Here →</Link>
 
             </div>
         </div>

@@ -1,5 +1,4 @@
 import BlogArticle from "@/components/BlogArticle";
-import {blogs} from "@/blogs";
 import styles from "@/styles/blog.module.css"
 import path from 'path'
 import fs from 'fs'
@@ -7,29 +6,49 @@ import { serialize } from 'next-mdx-remote/serialize'
 import remarkGfm from 'remark-gfm'
 import Head from "next/head";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import {getAllBlogs, getBlog} from "@/lib/populateBlogs";
 
 
 export const getStaticPaths = async () => {
-    const paths = blogs.map((blog) => ({
-        params: {id: blog.id.toString()},
-    }));
+    const mdxDir = path.join(process.cwd(), 'public', 'mdx');
+    const files = fs.readdirSync(mdxDir);
+
+    const paths = files
+        .filter(file => file.endsWith('.mdx'))
+        .map(file => ({
+            params: { id: path.basename(file, '.mdx') } // removes .mdx extension
+        }));
+
     return {
         paths,
-        fallback: false,
+        fallback: false
     };
 };
 
 export const getStaticProps = async ({ params }) => {
-    const blog = blogs.find((i) => i.id.toString() === params?.id);
+
+    const blogs = getAllBlogs(false);
+    const blog = getBlog(params?.id, true);
+
+
+    let allLinks = [];
+
+    blogs.forEach((searchBlog => {
+        if (searchBlog.links.includes(blog.id)) {
+            allLinks.push({title: searchBlog.title, id:searchBlog.id})
+        }
+        if (blog.links.includes(searchBlog.id)) {
+            allLinks.push({title: searchBlog.title, id:searchBlog.id})
+        }
+    }))
+
+
 
     if (!blog) {
         return { notFound: true };
     }
 
-    const mdxFilePath = path.join(process.cwd(), 'public', 'mdx', `${params.id}.mdx`)
-    const source = fs.readFileSync(mdxFilePath, 'utf8')
-    const mdxSource = await serialize(source, {
+    const mdxSource = await serialize(blog.content, {
         mdxOptions: {
             remarkPlugins: [remarkGfm],
         },
@@ -39,7 +58,8 @@ export const getStaticProps = async ({ params }) => {
             blog: {
                 ...blog,
                 content: mdxSource, // compiled MDX
-                plaintext: source
+                plaintext: blog.content,
+                linkObjs: allLinks,
             },
         },
     }
@@ -47,23 +67,8 @@ export const getStaticProps = async ({ params }) => {
 
 export default function Blog({blog}) {
 
-    const [allLinks, setAllLinks] = useState([])
-
-    useEffect(() => {
-        let allLinks = [];
-        blogs.forEach((searchBlog => {
-            if (searchBlog.links.includes(blog.id)) {
-                allLinks.push({title: searchBlog.title, id:searchBlog.id})
-            }
-            if (blog.links.includes(searchBlog.id)) {
-                allLinks.push({title: searchBlog.title, id:searchBlog.id})
-            }
-        }))
-        setAllLinks(allLinks)
-    }, [blog]);
-
+    console.log(blog)
     return (
-
         <div className={styles.container}>
             <Head>
                 <title>{`${blog.title} | Mohamed Sheref`}</title>
@@ -74,7 +79,6 @@ export default function Blog({blog}) {
                 <meta property="og:type" content="website" />
 
                 <meta name="description" content={blog.plaintext}/>
-
                 {
                     blog.images.length > 0 &&
                     <>
@@ -85,12 +89,13 @@ export default function Blog({blog}) {
 
                 }
             </Head>
+
             <BlogArticle blog={blog}/>
-            {allLinks ?
+            {blog.linkObjs?
                 <nav>
-                    Related:
+                    <h3>Related:</h3>
                     <ul>
-                        {allLinks.map(link => (
+                        {blog.linkObjs.map(link => (
                             <li key={link.id}>
                                 <Link href={`/blogs/${link.id}`}>
                                     {link.title}

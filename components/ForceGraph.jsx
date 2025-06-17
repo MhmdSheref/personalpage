@@ -8,6 +8,8 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
     useEffect(() => {
         fgRef.current?.d3Force('link').distance(40);
         fgRef.current.d3Force('link').strength(0.5);
+        fgRef.current.zoom(4, 0)
+
     }, []);
     function dataFromBlogs(blogs) {
         let nodes = []
@@ -19,6 +21,7 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
                 label:blogEntry.title,
                 val:blogEntry.tags.length + 1,
                 tags:blogEntry.tags,
+                isNew:blogEntry.isNew,
             })
 
             for (const link of blogEntry.links) {
@@ -63,12 +66,23 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
     }
 
     function nodePaint(node, ctx) {
+        if (node.isNew) {
+            if (node.isNew) {
+                ctx.strokeStyle = "mediumpurple";
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, Math.sqrt(node.val || 1) * 4 , 0, 2 * Math.PI, false);
+                ctx.stroke(); // outline only
+            }
+        }
+
         if (hoveredNode.current === node) {
             ctx.fillStyle = "rgba(0,0,0,0.2)";
             ctx.beginPath();
             ctx.arc(node.x, node.y, Math.sqrt(node.val || 1) * 4, 0, 2 * Math.PI, false);
             ctx.fill(); // circle
         }
+
 
         ctx.fillStyle = "#dfdcdc"
         ctx.font = '3px Literata';
@@ -91,7 +105,7 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
             autoPauseRedraw={false}
             ref={fgRef}
             maxZoom={10}
-            minZoom={1}
+            minZoom={3}
             linkWidth={3}
             nodeAutoColorBy={getColor}
             nodeCanvasObjectMode={() => "after"}

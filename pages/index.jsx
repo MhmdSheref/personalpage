@@ -1,25 +1,55 @@
 import BlogPreview from "@/components/BlogPreview.jsx"
 import Sidebar from "@/components/Sidebar.jsx"
-import {blogs} from "@/blogs";
-import {useState, useCallback} from "react";
+import {useState, useCallback, useEffect} from "react";
 import Head from "next/head"
 import dynamic from 'next/dynamic';
+import {getAllBlogs} from "@/lib/populateBlogs";
 
+export async function getStaticProps() {
+    // Run this expensive function once
+    const blogData = getAllBlogs();
+
+    return {
+        props: {
+            blogs: blogData,
+        }
+    };
+}
 
 const ForceGraph = dynamic(
     () => import('@/components/ForceGraph'),
     { ssr: false }
 );
-export default function App() {
+export default function App({blogs}) {
     const [activeBlogId, setActiveBlogId] = useState(1)
     const [previewShown, setPreviewShown] = useState(false)
-
+    const [modifiedBlogs, setModifiedBlogs] = useState(blogs)
 
     const handleActiveBlogId = useCallback((id) => {
         setPreviewShown(true);
         setActiveBlogId(id);
 
     }, []);
+
+
+
+
+    useEffect(() => {
+        const modifiedBlogs = blogs.map(blog => {
+
+            const [day, month, year] = blog.date.split('/').map(Number);
+            const postDate = new Date(year, month - 1, day);
+
+            const now = new Date();
+
+            const diffTime = now - postDate;
+            const diffDays = diffTime / (1000 * 60 * 60 * 24);
+            const isNew = (diffDays >= 0 && diffDays <= 3)
+            return {...blog, isNew:isNew}
+        })
+        setModifiedBlogs(modifiedBlogs)
+    }, []);
+
 
 
     return (
@@ -33,9 +63,9 @@ export default function App() {
                      where I document all kinds of thoughts and experiments, with interactive labs when possible.`}/>
             </Head>
             <BlogPreview activeBlogId={activeBlogId} isShown={previewShown} setIsShown={setPreviewShown}
-                         blogs={blogs}/>
-            <ForceGraph blogs={blogs} setActiveBlogId={handleActiveBlogId}/>
-            <Sidebar blogs={blogs} setActiveBlogId={handleActiveBlogId}/>
+                         blogs={modifiedBlogs}/>
+            <ForceGraph blogs={modifiedBlogs} setActiveBlogId={handleActiveBlogId}/>
+            <Sidebar blogs={modifiedBlogs} setActiveBlogId={handleActiveBlogId}/>
         </>
     )
 }

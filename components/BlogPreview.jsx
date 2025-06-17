@@ -7,7 +7,7 @@ export default function BlogPreview({blogs, isShown, setIsShown, activeBlogId}) 
         <div className={styles.BlogPreview + " " + (isShown? styles.shown : "")}>
             <button onClick={()=>{setIsShown(!isShown)}}><img alt="arrow" src="/arrow.svg"/></button>
             <div className={styles.content}>
-                <DynamicBlogArticle blog={blog}/>
+                <DynamicBlogArticle blog={blog} isPreview={!blog.preventPreview}/>
                 <Link className={styles.callToAction} href={`/blogs/${blog.id}`}>Original Blog Here →</Link>
 
             </div>

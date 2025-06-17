@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm'
 import Head from "next/head";
 import Link from "next/link";
 import {getAllBlogs, getBlog} from "@/lib/populateBlogs";
+import NotFound from "@/pages/404";
 
 
 export const getStaticPaths = async () => {
@@ -66,8 +67,6 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export default function Blog({blog}) {
-
-    console.log(blog)
     return (
         <div className={styles.container}>
             <Head>

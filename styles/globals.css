@@ -124,6 +124,7 @@ div:has(>.force-graph-container) {
   box-shadow:
           0 0 3px 1px #1e1e1e,
           inset 0 -3em 3em rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .new {

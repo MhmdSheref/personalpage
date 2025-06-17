@@ -13,7 +13,11 @@ export default function Header() {
         <header className={styles.Header}>
             <div className={styles.HeaderContent}>
                 <span className={styles.Label}>
-                    <span className={styles.Name}>Mohamed Sheref</span>
+                    <Link href={"/"} style={{boxShadow:"none", borderBottom:"none"}}>
+                    <span className={styles.Name}>
+                        Mohamed Sheref
+                    </span>
+                    </Link>
                     <span className={styles.Comment + " " + firaCode.className}>//Undefined but not Null</span>
                 </span>
                 <label className={styles.HamMenu}>
@@ -23,7 +27,7 @@ export default function Header() {
                 <nav className={styles.Nav + " " + (hamChecked? styles.Open : null)}>
                     <Link href="/"><span>Home</span></Link>
                     <Link href="/lab"><span>Lab</span></Link>
-                    <Link href="/socials"><span>Socials</span></Link>
+                    <Link href="/about"><span>About Me</span></Link>
                 </nav>
             </div>
         </header>

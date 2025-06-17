@@ -1,13 +1,35 @@
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
 }
 
 .card {
-    background: #363636;
-    padding: 5px 20px;
+    background: #191919;
+    padding: 20px 40px;
     border-radius: 30px;
+    max-width: 800px;
+}
+
+.Head {
+    display: flex;
+    align-items: center;
+}
+
+.imgCont {
+    border-radius: 1000px;
+    overflow: hidden;
+    width: fit-content;
+    height: 128px;
+    margin-left: auto;
+    margin-right: 40px;
+    border: 2px solid #dfdcdc;
+}
+
+.em {
+    color:mediumpurple;
+    font-size:1.2rem;
 }

@@ -28,6 +28,7 @@
 .Name {
     font-size: 1.4rem;
     text-wrap: nowrap;
+    color: #dfdcdc;
 }
 
 .Comment {

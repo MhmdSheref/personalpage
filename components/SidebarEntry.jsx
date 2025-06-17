@@ -4,8 +4,8 @@ import React from "react";
 export default React.memo(function SidebarEntry({blog, setActiveBlogId}) {
     return (
         <section className={`SidebarEntry ${blog.isNew? "new" : null}`} onClick={()=>setActiveBlogId(blog.id)}>
-            <Image src={blog.images[0]? blog.images[0].img : "/T.svg"}
-                   alt={blog.images[0]? blog.images[0].alt : "Cover Image"}
+            <Image src={blog.images?.[0]?.img || "/T.svg"}
+                   alt={blog.images?.[0]?.alt || "Cover Image"}
                    width={150} height={150}/>
             <p>{blog.title}</p>
             <Tags tags={blog.tags.length? [blog.tags[0]] : []}/>

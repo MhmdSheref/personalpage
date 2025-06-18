@@ -22,7 +22,7 @@ const ForceGraph = dynamic(
 );
 export default function App({blogs}) {
     const [activeBlogId, setActiveBlogId] = useState("introduction")
-    const [previewShown, setPreviewShown] = useState(false)
+    const [previewShown, setPreviewShown] = useState(true)
     const [modifiedBlogs, setModifiedBlogs] = useState(blogs)
 
     const handleActiveBlogId = useCallback((id) => {

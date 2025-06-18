@@ -2,6 +2,7 @@ import Tags from "@/components/Tags";
 import Image from "next/image";
 import React from "react";
 export default React.memo(function SidebarEntry({blog, setActiveBlogId}) {
+    console.log(blog)
     return (
         <section className={`SidebarEntry ${blog.isNew? "new" : null}`} onClick={()=>setActiveBlogId(blog.id)}>
             <Image src={blog.images?.[0]?.img || "/T.svg"}

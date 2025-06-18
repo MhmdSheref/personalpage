@@ -7,7 +7,6 @@ import remarkGfm from 'remark-gfm'
 import Head from "next/head";
 import Link from "next/link";
 import {getAllBlogs, getBlog} from "@/lib/populateBlogs";
-import NotFound from "@/pages/404";
 
 
 export const getStaticPaths = async () => {
@@ -71,7 +70,7 @@ export default function Blog({blog}) {
         <div className={styles.container}>
             <Head>
                 <title>{`${blog.title} | Mohamed Sheref`}</title>
-                <meta property="og:site_name" content="Sheref's Mind Palace" />
+                <meta property="og:site_name" content="Mohamed Sheref" />
                 <meta property="og:title" content={blog.title} />
                 <meta property="og:description" content={blog.plaintext} />
                 <meta property="og:url" content="https://mhmdsheref.vercel.app/" />
@@ -90,7 +89,7 @@ export default function Blog({blog}) {
             </Head>
 
             <BlogArticle blog={blog}/>
-            {blog.linkObjs?
+            {blog.linkObjs.length?
                 <nav>
                     <h3>Related:</h3>
                     <ul>

@@ -14,20 +14,24 @@ export default function BlogArticle({ blog }) {
             </div>
             <MDXRemote {...blog.content} components={{
                 CodeWindow,
-                img: (props) => (
+                img: ({ alt = '', src, ...rest }) => {
+                const match = alt.match(/^(.*?)\s*=\s*(\d+)x(\d+)$/);
+                const [realAlt, width, height] = match
+                ? [match[1], parseInt(match[2]), parseInt(match[3])]
+                : [alt, 800, 400];
+                return (
                     <Image
-                        {...props}
-                        alt={props.alt || ""}
-                        width={props.width || 800}
-                        height={props.height || 400}
-                        style={{ maxWidth: "100%", height: "auto" }}
+                        src={src}
+                        alt={realAlt}
+                        width={width}
+                        height={height}
+                        style={{ maxWidth: '100%', objectFit: 'contain' }}
+                        {...rest}
                     />
-                ),
-                table: ({children}) => (
-                    <div className="TableContainer"><table>{children}</table></div>
-                ),
-
-            }} />
+                );
+                }
+            }}
+            />
         </article>
     )
 }

@@ -1,5 +1,6 @@
 import styles from "@/styles/socials.module.css"
 import Image from "next/image";
+import Head from "next/head";
 
 const age = (() => {
     const [d, m, y] = "17/9/2006".split("/").map(Number);
@@ -16,8 +17,71 @@ const age = (() => {
 
 export default function About() {
     return (
-        // <div className={styles.container + " " + firaCode.className}>
         <div className={styles.container}>
+            <Head>
+                <title>{`About Me | Mohamed Sheref`}</title>
+                <meta property="og:site_name" content="Mohamed Sheref" />
+                <meta property="og:title" content="About Me | Mohmaed Sheref" />
+                <meta property="og:description" content={`
+                Hi
+I exist
+
+I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age===18?"n":""} ${age}-year-old Engineering student at Cairo University who is deeply fascinated by these wonderful machines we call computers.
+
+My interests shift over time, usually every few months, but the pattern stays the same: It's always something related to tech or computers. Right now that includes:
+
+    Programming
+    Generative AI and LLMs
+    Game Development
+    Graphic Design
+    3D Modeling
+    Reading
+    Watching Anime
+
+So in short, you could just say I'm a Computer Nerd
+
+I'm not on social media much but you can reach out to me here:
+
+    Discord: @Sheref_
+    Github: MhmdSheref
+    Email: mhmdsherefIO@gmail.com
+
+Now go read my blogs`} />
+                <meta property="og:url" content="https://mhmdsheref.vercel.app/" />
+                <meta property="og:type" content="website" />
+
+                <meta name="description" content={`
+                Hi
+I exist
+A picture of me, Mohamed Sheref
+
+I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age===18?"n":""} ${age}-year-old Engineering student at Cairo University who is deeply fascinated by these wonderful machines we call computers.
+
+My interests shift over time, usually every few months, but the pattern stays the same: It's always something related to tech or computers. Right now that includes:
+
+    Programming
+    Generative AI and LLMs
+    Game Development
+    Graphic Design
+    3D Modeling
+    Reading
+    Watching Anime
+
+So in short, you could just say I'm a Computer Nerd
+
+I'm not on social media much but you can reach out to me here:
+
+    Discord: @Sheref_
+    Github: MhmdSheref
+    Email: mhmdsherefIO@gmail.com
+
+Now go read my blogs`}/>
+                <meta property="og:image" content="https://github.com/mhmdsheref.png" />
+                <meta property="og:image:width" content="128" />
+                <meta property="og:image:height" content="128" />
+
+            </Head>
+
             <div className={styles.card}>
                 <div className={styles.Head}>
                     <span>
@@ -35,7 +99,6 @@ export default function About() {
                     <span className={styles.em}> Sheref</span>.
                     I am a{age===18?"n":""} {age}-year-old Engineering student at Cairo University who is deeply
                     fascinated by these wonderful machines we call computers.
-
                 </p>
                 <p>
                     My interests shift over time, usually every few months, but the pattern stays the same:
@@ -60,7 +123,6 @@ export default function About() {
                     <li>Email: <a href="mailto:mhmdsherefio@gmail.com">mhmdsherefIO@gmail.com</a></li>
                 </ul>
                 <p>Now go read my blogs</p>
-
             </div>
 
         </div>

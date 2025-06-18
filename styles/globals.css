@@ -73,6 +73,11 @@ th {
   background: #1e1e1e;
 }
 
+p, li {
+  font-family: var(--font-inter), sans-serif;
+  line-height: 1.3rem;
+}
+
 
 /*----center force graph container----*/
 div:has(>.force-graph-container) {

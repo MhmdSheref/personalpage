@@ -1,13 +1,19 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Link from "next/link";
 import styles from "@/styles/header.module.css"
 import {Fira_Code} from "next/font/google";
+import { useRouter } from 'next/router';
 
 const firaCode = Fira_Code({
     subsets: ['latin'],
 })
 export default function Header() {
     const [hamChecked, setHamChecked] = useState(false)
+    const { pathname } = useRouter();
+
+    useEffect(() => {
+        setHamChecked(false)
+    }, [pathname]);
 
     return (
         <header className={styles.Header}>
@@ -22,7 +28,7 @@ export default function Header() {
                 </span>
                 <label className={styles.HamMenu}>
                     <img src="/hamMenu.svg" alt="Hamburger Menu" />
-                    <input style={{display:"none"}} type="checkbox" onChange={(e)=>setHamChecked(e.target.checked)}/>
+                    <input style={{display:"none"}} type="checkbox" checked={hamChecked} onChange={(e)=>setHamChecked(e.target.checked)}/>
                 </label>
                 <nav className={styles.Nav + " " + (hamChecked? styles.Open : null)}>
                     <Link href="/"><span>Home</span></Link>

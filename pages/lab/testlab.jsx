@@ -47,10 +47,10 @@ export default function PythonPlayground() {
     const runCode = async () => {
         if (!pyodide) return;
         try {
-            pyodide.runPythonAsync(code);
+            await pyodide.runPythonAsync(code);
         } catch (err) {
-            console.warn(err.message)
             handleOutput(err.message);
+            console.warn(err.message);
         }
     };
 

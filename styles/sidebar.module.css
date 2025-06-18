@@ -1,0 +1,124 @@
+
+/*----right sidebar----*/
+.Sidebar {
+    background: #262626;
+    padding-top: 65px;
+    min-width: 350px;
+    width: 21%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.Shown {
+
+}
+
+
+@media screen and (max-width: 720px) {
+    .Sidebar {
+        display: none;
+    }
+
+    .Shown {
+        display: block;
+        padding-top: 185px;
+    }
+
+}
+
+
+@media screen and (max-width: 529px) {
+    .Sidebar {
+        display: none;
+    }
+
+    .Shown {
+        display: block;
+        padding-top: 225px;
+        /*width: 100%;*/
+    }
+}
+
+.SidebarScrollCont {
+    padding: 0 25px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.SidebarEntry {
+    height: 6.1rem;
+    color: inherit;
+    text-decoration: none;
+    background: #363636;
+    display: grid;
+    grid-template:
+"img text text" 1fr
+"img text text" 1fr
+"img tags date" 1fr / auto auto 1fr;
+    margin: 25px 0;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    /*overflow: hidden;*/
+    cursor: pointer;
+    line-height: 1.25rem;
+    box-shadow:
+            0 0 3px 1px #1e1e1e,
+            inset 0 -3em 3em rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.new {
+    box-shadow:
+            0 0 0 1px mediumpurple,
+            0 0 3px 1px #1e1e1e,
+            inset 0 -3em 3em rgba(0, 0, 0, 0.1);
+}
+
+.SidebarEntry>img {
+    height: inherit;
+    width: 6.1rem;
+    object-fit: cover;
+    grid-area: img;
+    margin: 0 10px 0 0;
+
+}
+
+.SidebarEntry>p {
+    grid-area: text;
+    display: -webkit-box;
+    display: -moz-box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+.SidebarEntry>time {
+    grid-area: date;
+    justify-self: right;
+    padding-right: 15px;
+}
+
+.SidebarEntry>.tags {
+    grid-area: tags;
+    justify-self: left;
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+
+.SidebarEntry:hover {
+    filter: brightness(90%);
+}
+
+.SidebarEntry:active {
+    filter: brightness(80%);
+    backdrop-filter: brightness(80%);
+}

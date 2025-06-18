@@ -28,10 +28,7 @@ export default function App({blogs}) {
     const handleActiveBlogId = useCallback((id) => {
         setPreviewShown(true);
         setActiveBlogId(id);
-
     }, []);
-
-
 
 
     useEffect(() => {
@@ -50,6 +47,21 @@ export default function App({blogs}) {
         setModifiedBlogs(modifiedBlogs)
     }, []);
 
+    useEffect(() => {
+        const prev = sessionStorage.getItem("previewShown") === "true";
+        const id = sessionStorage.getItem("activeBlogId")
+        if (prev !== null) setPreviewShown(prev); else setPreviewShown(true);
+        if (id !== null) setActiveBlogId(id)
+    }, []);
+
+
+    useEffect(() => {
+        sessionStorage.setItem("previewShown", previewShown.toString())
+    }, [previewShown]);
+
+    useEffect(() => {
+        sessionStorage.setItem("activeBlogId", activeBlogId)
+    }, [activeBlogId]);
 
 
     return (

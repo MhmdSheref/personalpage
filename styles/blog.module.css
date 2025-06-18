@@ -1,11 +1,12 @@
 .container {
-    margin: auto;
     padding: 40px;
     width: 60%;
     min-width: 880px;
     box-sizing: border-box;
     background: #191919;
     min-height: calc(100vh - 140px);
+    margin: auto auto 200px;
+    box-shadow: 0 -100px 5px 1px #191919;
 }
 
 @media screen and (max-width: 880px) {

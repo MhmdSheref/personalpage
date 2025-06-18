@@ -29,10 +29,14 @@ export const getStaticProps = async ({ params }) => {
 
     const blogs = getAllBlogs(false);
     const blog = getBlog(params?.id, true);
-
+    const cleanMd = (md) => {
+        return md
+            .replaceAll(/!\[.*?]\(.*?\)/g, '')
+            .replaceAll(/\[([^\]]+)]\((.*?)\)/g, '$1')
+            .replaceAll("\\", "");
+    };
 
     let allLinks = [];
-
     blogs.forEach((searchBlog => {
         if (searchBlog.links.includes(blog.id)) {
             allLinks.push({title: searchBlog.title, id:searchBlog.id})
@@ -41,8 +45,6 @@ export const getStaticProps = async ({ params }) => {
             allLinks.push({title: searchBlog.title, id:searchBlog.id})
         }
     }))
-
-
 
     if (!blog) {
         return { notFound: true };
@@ -58,7 +60,7 @@ export const getStaticProps = async ({ params }) => {
             blog: {
                 ...blog,
                 content: mdxSource, // compiled MDX
-                plaintext: blog.content,
+                plaintext: cleanMd(blog.content),
                 linkObjs: allLinks,
             },
         },

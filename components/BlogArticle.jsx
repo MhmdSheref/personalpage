@@ -23,13 +23,18 @@ export default function BlogArticle({ blog }) {
                     <Image
                         src={src}
                         alt={realAlt}
-                        width={width}
-                        height={height}
+                        width={parseInt(width)}
+                        height={parseInt(height)}
                         style={{ maxWidth: '100%', objectFit: 'contain' }}
                         {...rest}
                     />
                 );
-                }
+                },
+                a: (props) => (
+                    <a {...props} target="_blank" rel="noopener noreferrer">
+                        {props.children}
+                    </a>
+                ),
             }}
             />
         </article>

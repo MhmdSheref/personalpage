@@ -7,16 +7,35 @@ import { useRouter } from 'next/router';
 const firaCode = Fira_Code({
     subsets: ['latin'],
 })
+
 export default function Header() {
     const [hamChecked, setHamChecked] = useState(false)
+    const [showHeader, setShowHeader] = useState(true);
     const { pathname } = useRouter();
+
+
+    useEffect(() => {
+        let lastScrollY = window.scrollY;
+        function handleScroll() {
+            const currentScrollY = window.scrollY;
+            const scrollDown = currentScrollY > lastScrollY;
+
+            if (scrollDown) {setShowHeader(false); setHamChecked(false)}
+            else setShowHeader(true);
+
+            lastScrollY = currentScrollY;
+        }
+        window.addEventListener("scroll", handleScroll)
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     useEffect(() => {
         setHamChecked(false)
     }, [pathname]);
 
     return (
-        <header className={styles.Header}>
+        <header className={styles.Header} style={!showHeader? {top:"-100px"} : null}>
             <div className={styles.HeaderContent}>
                 <span className={styles.Label}>
                     <Link href={"/"} style={{boxShadow:"none", borderBottom:"none"}}>
@@ -28,7 +47,7 @@ export default function Header() {
                 </span>
                 <label className={styles.HamMenu}>
                     <img src="/hamMenu.svg" alt="Hamburger Menu" />
-                    <input style={{display:"none"}} type="checkbox" checked={hamChecked} onChange={(e)=>setHamChecked(e.target.checked)}/>
+                    <input id="HamCheckbox" style={{display:"none"}} type="checkbox" checked={hamChecked} onChange={(e)=>setHamChecked(e.target.checked)}/>
                 </label>
                 <nav className={styles.Nav + " " + (hamChecked? styles.Open : null)}>
                     <Link href="/"><span>Home</span></Link>

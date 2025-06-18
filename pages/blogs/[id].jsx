@@ -80,7 +80,7 @@ export default function Blog({blog}) {
                 {
                     blog.images.length > 0 &&
                     <>
-                        <meta property="og:image" content={blog.images[0]} />
+                        <meta property="og:image" content={blog.images[0].img} />
                         {/*<meta property="og:image:width" content="1200" />*/}
                         {/*<meta property="og:image:height" content="630" />*/}
                     </>

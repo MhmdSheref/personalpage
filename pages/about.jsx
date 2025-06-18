@@ -27,55 +27,16 @@ export default function About() {
 I exist
 
 I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age===18?"n":""} ${age}-year-old Engineering student at Cairo University who is deeply fascinated by these wonderful machines we call computers.
-
-My interests shift over time, usually every few months, but the pattern stays the same: It's always something related to tech or computers. Right now that includes:
-
-    Programming
-    Generative AI and LLMs
-    Game Development
-    Graphic Design
-    3D Modeling
-    Reading
-    Watching Anime
-
-So in short, you could just say I'm a Computer Nerd
-
-I'm not on social media much but you can reach out to me here:
-
-    Discord: @Sheref_
-    Github: MhmdSheref
-    Email: mhmdsherefIO@gmail.com
-
-Now go read my blogs`} />
+`} />
                 <meta property="og:url" content="https://mhmdsheref.vercel.app/" />
                 <meta property="og:type" content="website" />
 
                 <meta name="description" content={`
                 Hi
 I exist
-A picture of me, Mohamed Sheref
 
 I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age===18?"n":""} ${age}-year-old Engineering student at Cairo University who is deeply fascinated by these wonderful machines we call computers.
-
-My interests shift over time, usually every few months, but the pattern stays the same: It's always something related to tech or computers. Right now that includes:
-
-    Programming
-    Generative AI and LLMs
-    Game Development
-    Graphic Design
-    3D Modeling
-    Reading
-    Watching Anime
-
-So in short, you could just say I'm a Computer Nerd
-
-I'm not on social media much but you can reach out to me here:
-
-    Discord: @Sheref_
-    Github: MhmdSheref
-    Email: mhmdsherefIO@gmail.com
-
-Now go read my blogs`}/>
+`}/>
                 <meta property="og:image" content="https://github.com/mhmdsheref.png" />
                 <meta property="og:image:width" content="128" />
                 <meta property="og:image:height" content="128" />

@@ -1,6 +1,6 @@
-import BlogPreview from "@/components/BlogPreview.jsx"
-import Sidebar from "@/components/Sidebar.jsx"
-import {useState, useCallback, useEffect} from "react";
+import BlogPreview from "@/components/home/BlogPreview.jsx"
+import Sidebar from "@/components/home/Sidebar.jsx"
+import {useCallback, useEffect, useState} from "react";
 import Head from "next/head"
 import dynamic from 'next/dynamic';
 import {getAllBlogs} from "@/lib/populateBlogs";
@@ -17,7 +17,7 @@ export async function getStaticProps() {
 }
 
 const ForceGraph = dynamic(
-    () => import('@/components/ForceGraph'),
+    () => import('@/components/home/ForceGraph'),
     { ssr: false }
 );
 export default function App({blogs}) {

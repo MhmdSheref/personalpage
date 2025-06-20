@@ -93,7 +93,7 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
 
     // gen a number persistent color from around the palette
     const getColor = n => '#' + (
-        ([...(n.tags[0]? n.tags[0] : "a")].reduce((acc, val, i)=> ((i === 0? acc : 0) + val.charCodeAt(0))) * 12345678)
+        ([...(n.tags? n.tags : "a")].reduce((acc, val, i)=> ((i === 0? acc : 0) + val.charCodeAt(0))) * 1234567)
         % Math.pow(2, 24)).toString(16).padStart(6, '0');
 
 

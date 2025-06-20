@@ -1,4 +1,4 @@
-import SidebarEntry from "./SidebarEntry.jsx"
+import SidebarEntry from "@/components/home/SidebarEntry.jsx"
 import styles from "@/styles/sidebar.module.css"
 import {useEffect, useState} from "react";
 export default function Sidebar({blogs, setActiveBlogId}) {

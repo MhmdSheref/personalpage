@@ -85,6 +85,10 @@ time {
   padding: 5px;
 }
 
+img {
+  image-rendering: high-quality;
+}
+
 /*----center force graph container----*/
 div:has(>.force-graph-container) {
   overflow: hidden;

@@ -1,4 +1,4 @@
-import DynamicBlogArticle from "@/components/DynamicBlogArticle";
+import DynamicBlogArticle from "@/components/home/DynamicBlogArticle";
 import Link from "next/link";
 import styles from "@/styles/blogPreview.module.css"
 export default function BlogPreview({blogs, isShown, setIsShown, activeBlogId}) {

@@ -8,10 +8,10 @@ import {Fira_Code} from "next/font/google";
 const firaCode = Fira_Code({
     subsets: ['latin'],
 })
-export default function PythonPlayground() {
+export default function PythonPlayground(props) {
     const [pyodide, setPyodide] = useState(null);
-    const [output, setOutput] = useState('');
-    const [code, setCode] = useState(`print("Hello from Python!")`);
+    const [output, setOutput] = useState("");
+    const [code, setCode] = useState(props.code);
     const refInput = useRef(null)
 
 
@@ -41,6 +41,9 @@ export default function PythonPlayground() {
         loadPyodideScript();
     }, []);
 
+    useEffect(() => {
+        setCode(props.code)
+    }, [props.code]);
 
 
 
@@ -93,25 +96,12 @@ export default function PythonPlayground() {
                             "&": {
                                 fontFamily: `'Fira Code', 'Source Code Pro', monospace`,
                                 fontSize: "14px",
-                                lineHeight: "1.6",
-                                backgroundColor: "#1e1e1e",
-                                color: "#ffffff",
-                            },
-                            ".cm-gutters": {
-                                backgroundColor: "#1e1e1e",
-                                color: "#999999",
-                                border: "none",
                             },
                         }),
                     ]}
-                    basicSetup={{
-                        lineNumbers: true,
-                        highlightActiveLine: true,
-                        highlightActiveLineGutter: true,
-                    }}
                     onChange={(e) => setCode(e)}
                 />
-                <div className={styles.console + " " + firaCode.className}>
+                <div className={styles.console + " " + firaCode.className} >
                     {output}
                     <span className={styles.consoleInput}><input ref={refInput}/></span>
                 </div>

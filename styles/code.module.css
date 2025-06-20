@@ -1,3 +1,8 @@
+.CodeBlock {
+    border: 1px solid #262626;
+    border-radius: 3px;
+}
+
 .pyContainer {
     display: grid;
     grid-template: auto / 1fr 1fr;

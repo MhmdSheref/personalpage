@@ -1,7 +1,10 @@
 import { MDXRemote } from "next-mdx-remote"
-import CodeWindow from "@/components/CodeWindow"
+import CodeWindow from "@/components/lab/CodeWindow"
+import CodeBlock from "@/components/home/CodeBlock";
 import Tags from "@/components/Tags";
 import Image from "next/image";
+import Link from "next/link";
+import FlowField from "@/components/lab/labContent/FlowField";
 
 
 export default function BlogArticle({ blog }) {
@@ -25,7 +28,8 @@ export default function BlogArticle({ blog }) {
                         alt={realAlt}
                         width={parseInt(width)}
                         height={parseInt(height)}
-                        style={{ maxWidth: '100%', objectFit: 'contain' }}
+                        quality={100}
+                        style={{ maxWidth: '100%', objectFit: 'contain', height:"fit-content"}}
                         {...rest}
                     />
                 );
@@ -35,6 +39,18 @@ export default function BlogArticle({ blog }) {
                         {props.children}
                     </a>
                 ),
+                pre: (props) => {
+                    const child = props.children;
+                    const className = child?.props?.className || '';
+                    const match = className.match(/language-(\w+)/);
+                    const language = match?.[1] || 'plaintext';
+                    const code = child?.props?.children || '';
+
+                    return <CodeBlock code={code.trim()} language={language} />;
+                },
+                FlowField,
+                Link,
+
             }}
             />
         </article>

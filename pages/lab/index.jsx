@@ -1,12 +1,18 @@
-import Link from "next/link";
-
+import {labs} from "@/lib/labs"
+import LabCard from "@/components/lab/LabCard";
+import styles from "@/styles/lab.module.css"
 export default function Lab() {
+
     return (
         <>
-            <h1>UNDER CONSTRUCTION</h1>
-            <h3>But for now you can try out these 2 upcoming features:</h3>
-            <Link href={"/lab/testlab"}>Python test lab</Link><br/>
-            <Link href={"/lab/testlab2"}>JavaScript test lab</Link>
+            <div className={styles.Title}><h1>Welcome to the lab!</h1></div>
+            <div className={styles.gridContainer}>
+                <div className={styles.grid}>
+                    {labs.map((labEntry)=>(
+                        <LabCard labEntry={labEntry}/>
+                    ))}
+                </div>
+            </div>
         </>
 
 )

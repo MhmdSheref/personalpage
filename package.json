@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.4",
     "@codemirror/lang-python": "^6.2.1",
     "@codemirror/view": "^6.37.2",
     "@codesandbox/sandpack-react": "^2.20.0",
@@ -24,7 +25,8 @@
     "react-dom": "^19.0.0",
     "react-force-graph-2d": "^1.27.1",
     "remark-gfm": "^4.0.1",
-    "resend": "^4.6.0"
+    "resend": "^4.6.0",
+    "simplex-noise": "^4.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

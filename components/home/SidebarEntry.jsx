@@ -8,7 +8,9 @@ export default React.memo(function SidebarEntry({blog, setActiveBlogId}) {
         <section className={`${styles.SidebarEntry} ${blog.isNew? styles.new : null}`} onClick={()=>setActiveBlogId(blog.id)}>
             <Image src={blog.images?.[0]?.img || "/T.svg"}
                    alt={blog.images?.[0]?.alt || "Cover Image"}
-                   width={150} height={150}/>
+                   width={150} height={150}
+                   quality={95}
+            />
             <p>{blog.title}</p>
             <Tags tags={blog.tags.length? [blog.tags[0]] : []}/>
             <time>{blog.date}</time>

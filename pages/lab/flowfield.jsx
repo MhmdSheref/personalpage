@@ -1,6 +1,7 @@
 import FlowField from "@/components/lab/labContent/FlowField";
 import styles from "@/styles/lab.module.css";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function FlowFieldController() {
     const [color, setColor] = useState("#ff0000");
@@ -144,6 +145,7 @@ export default function FlowFieldController() {
                     </label>
                 </fieldset>
             </div>
+            <Link href={"/blogs/creating-art-with-code"}>Link to related blog post</Link>
         </>
     );
 }

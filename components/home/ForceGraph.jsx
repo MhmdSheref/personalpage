@@ -22,6 +22,7 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
                 val:blogEntry.tags.length + 1,
                 tags:blogEntry.tags,
                 isNew:blogEntry.isNew,
+                color:blogEntry.color,
             })
 
             for (const link of blogEntry.links) {
@@ -92,9 +93,11 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
     }
 
     // gen a number persistent color from around the palette
-    const getColor = n => '#' + (
-        ([...(n.tags? n.tags : "a")].reduce((acc, val, i)=> ((i === 0? acc : 0) + val.charCodeAt(0))) * 1234567)
-        % Math.pow(2, 24)).toString(16).padStart(6, '0');
+    const getColor = n => (
+        n.color? n.color : '#' + (
+            ([...(n.tags? n.tags : "a")].reduce((acc, val, i)=> ((i === 0? acc : 0) + val.charCodeAt(0))) * 1234567)
+            % Math.pow(2, 24)).toString(16).padStart(6, '0')
+        )
 
 
     return (

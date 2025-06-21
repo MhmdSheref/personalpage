@@ -10,7 +10,9 @@
 }
 
 .console {
-    background: #191919;
+    --font-fira: "Fira Code";
+    font-family: var(--font-fira), monospace;
+    background: #0e0e0e;
     font-size: 0.9rem;
     white-space: pre-wrap;
     padding: 0 10px;
@@ -25,11 +27,11 @@
 }
 
 .consoleInput>input {
+    font-family: inherit;
     flex-grow: 1;
     border: none;
     background: transparent;
     color: #dfdcdc;
-    font-family: inherit;
 }
 
 .consoleInput>input:focus {
@@ -39,6 +41,22 @@
 
 .consoleInput:before {
     content: ">";
+}
+
+.button {
+    border: none;
+    background: #363636;
+    color: white;
+    font-family: var(--font-inter), sans-serif;
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    filter: brightness(90%);
+    backdrop-filter: brightness(90%);
 }
 
 @media screen and (max-width:768px) {

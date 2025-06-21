@@ -1,10 +1,8 @@
 import Link from "next/link";
-import {labs} from "@/lib/labs"
 import Image from "next/image";
 import styles from "@/styles/lab.module.css"
 
-export default function LabCard({}) {
-    const labEntry = labs[0]
+export default function LabCard({labEntry}) {
     return (
         <div className={styles.card}>
             <Link key={labEntry.id} href={`/lab/${labEntry.id}`}>

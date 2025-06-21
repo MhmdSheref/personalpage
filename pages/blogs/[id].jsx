@@ -4,6 +4,8 @@ import path from 'path'
 import fs from 'fs'
 import { serialize } from 'next-mdx-remote/serialize'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
 import Head from "next/head";
 import Link from "next/link";
 import {getAllBlogs, getBlog} from "@/lib/populateBlogs";
@@ -52,7 +54,9 @@ export const getStaticProps = async ({ params }) => {
 
     const mdxSource = await serialize(blog.content, {
         mdxOptions: {
-            remarkPlugins: [remarkGfm],
+            remarkPlugins: [remarkGfm, remarkMath],
+            rehypePlugins: [rehypeKatex],
+
         },
     })
     return {

@@ -7,6 +7,7 @@ import {Fira_Code} from "next/font/google";
 
 const firaCode = Fira_Code({
     subsets: ['latin'],
+    variable: "--font-fira"
 })
 export default function PythonPlayground(props) {
     const [pyodide, setPyodide] = useState(null);
@@ -25,7 +26,7 @@ export default function PythonPlayground(props) {
                     const pyodideInstance = await (window).loadPyodide({
                         indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.27.1/full/',
                     });
-                    await pyodideInstance.loadPackage(['requests']);
+                    await pyodideInstance.loadPackage(props.packages);
 
                     // Setting custom behaviors
                     pyodideInstance.globals.set("print", t=>handleOutput(t+"\n"));
@@ -101,15 +102,15 @@ export default function PythonPlayground(props) {
                     ]}
                     onChange={(e) => setCode(e)}
                 />
-                <div className={styles.console + " " + firaCode.className} >
+                <div className={firaCode.className + " " + styles.console} >
                     {output}
                     <span className={styles.consoleInput}><input ref={refInput}/></span>
                 </div>
             </div>
-            <button onClick={runCode} disabled={!pyodide}>
+            <button className={styles.button} onClick={runCode} disabled={!pyodide}>
                 {pyodide? "Run Python": "Loading..."}
             </button>
-            <button onClick={() => setOutput("")}>
+            <button className={styles.button} onClick={() => setOutput("")}>
                 Clear Console
             </button>
         </div>

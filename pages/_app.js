@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import 'katex/dist/katex.min.css';
 import Layout from "@/components/Layout";
 import Head from "next/head";
 import {Literata} from "next/font/google";

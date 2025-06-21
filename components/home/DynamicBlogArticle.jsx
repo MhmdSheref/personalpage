@@ -3,6 +3,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
 import BlogArticle from "@/components/BlogArticle";
 import matter from "gray-matter";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 
 export default function DynamicBlogArticle({ blog , isPreview }) {
@@ -35,7 +37,8 @@ export default function DynamicBlogArticle({ blog , isPreview }) {
 
                 const compiled = await serialize(preview, {
                     mdxOptions: {
-                        remarkPlugins: [remarkGfm],
+                        remarkPlugins: [remarkGfm, remarkMath],
+                        rehypePlugins: [rehypeKatex],
                     },
                 });
 

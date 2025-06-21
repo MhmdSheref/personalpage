@@ -4,6 +4,7 @@ date: "20/6/2025"
 tags: [programming, design]
 links: []
 preventPreview: false
+color: "#474ae6"
 ---
 ![pink lines in a wave like pattern = 1280x720](/creating-art-with-code/cover.png)
 
@@ -34,7 +35,16 @@ function normalize(vector) {
 
 passing all our points through a function like this allows us to point all our vectors towards a point, here's what that looks like when we tell it to target the center.
 <FlowField mode={"center"} showGrid={true}/>
-Now to actually add some moving particles
+Now to actually add some moving particles\
+First we need to generate our particles and add them to a list that we can access later. Then on every movement frame we need to:
+1. **Find the nearest vector to our particle**
+2. **Add their value to our particle's speed (simulating the vectors pushing the particle)**
+3. **Normalize this new speed so our particles don't go flying off**
+4. **Actually move the particle to their new position after the applied speed**
+5. **Draw a line between the old position and new position**
+6. **Make sure our particles aren't lost if they go outside our window**
+
+Here's the code for how I did that:
 
 ```js
 // General constants
@@ -79,7 +89,7 @@ function Particle(x, y, grid) {
         ctx.strokeStyle = this.color;
         ctx.moveTo(pos.x, pos.y);
 
-        // Using the movement vector, we calculated to calculate our new position
+        // Using the movement vector we calculated, calculate our new position
         let new_pos = [pos.x + this.movementVector[0]*this.speed, pos.y + this.movementVector[1]*this.speed]
         this.x = new_pos[0];
         this.y = new_pos[1];
@@ -156,7 +166,7 @@ function perlin_grid(x,y, t) {
 
 
 ## Finally,
-If you're interested in trying this out on your own, feel free to take a look at the <Link href="/lab/flowField">Related Lab Entry</Link>
+If you're interested in trying this out on your own, feel free to take a look at the <Link href="/lab/flowfield">Related Lab Entry</Link>
 and if you really want to, you can look at my messy code here, but let me warn you... I was rushing already rushed code, so it's not the cleanest\
 [Updated JSX version](https://github.com/MhmdSheref/personalpage/blob/master/components/lab/labContent/FlowField.jsx)\
 [Old static JS version](https://github.com/MhmdSheref/MhmdSheref.github.io/blob/master/perlin/script.js)

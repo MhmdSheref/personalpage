@@ -52,6 +52,7 @@
     -moz-box-orient: vertical;
     line-clamp: 1;
     -webkit-line-clamp: 1;
+    overflow: hidden;
 }
 
 .textCont>p {

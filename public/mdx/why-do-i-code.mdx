@@ -1,0 +1,77 @@
+---
+title: "Why do I Code?"
+date: "21/6/2025"
+tags: [programming]
+links: [creating-art-with-code]
+preventPreview: false
+color: "#47C5E6"
+---
+![Alert window saying: Warning. Your PC has been hacked!!! = 229x150](/why-do-i-code/hacked.png)
+# When did I start coding?
+I think coding came to me as a natural progression to spending too much time at the computer. From a very young age, I was blessed to have access to a computer at home. It was very weak even by then's standards, so it wasn't really a good fit for gaming, possibly a flash game here or there, but most of my time was spent messing with the programs that were already installed. I remember trying *and failing* to enjoy Solitaire as a little kid. Eventually, I did find something fun to do: I would spend my time doodling out characters that were amusing to me in Microsoft paint. Giving them names and funny features, one would have very square features which made him look like a robot, which he eventually became. Another had multiple bruises and birthmarks, he was very irritable.
+
+![Alert window saying: Warning. Your PC has been hacked!!! = 300x300](/why-do-i-code/square.png)
+![Alert window saying: Warning. Your PC has been hacked!!! = 300x300](/why-do-i-code/angry.png)\
+*Found relics from the far past, 2015*
+
+As I spent my time at the PC, I kept exploring further into the menus looking for something fun to do. That's when I found out about that one trick where you would screenshot the desktop and set that as a background, then you'd hide the icons and the taskbar. I thought it was the funniest thing ever. This shift was happening right around the time when YouTube was becoming more of a thing in my life. So through my search for other funny pc pranks, I encountered a video that taught you how to pop up windows popups using Visual Basic script, and then placing that as a shortcut with a fake icon. Through me finding more "trick" videos, I became more comfortable seeing and running code. I would edit page HTML to make funny screenshots, and I'd run timed shutdown commands to annoy anyone who decided to use the computer after me. While I still wasn't really "coding" these experiences made me realize, words that I typed could be used to actually change what I saw on the screen.
+
+I think that's when my love for coding really started. Slowly, my internet changed from **editing** what I was seeing, to **creating** my own things to look at.
+
+## Reflection into the present
+Right now, if I have to say what I love most about coding: it's how easy it makes experimentation, trying out an idea in your mind is as simple as creating a new file and writing it down. Any challenges you face are doors to further exploration that are sure to lead you to a deeper understanding of the topic at hand.
+
+### Recent example
+I recently wanted to test if I could calculate and graph the derivative of a function using python. At first, I thought about how I would have to map out every possibility with the correct rules for derivatives in deep self-referencing logic, it became a whole headache, but then I was reminded of the very first definition of a derivative we were actually taught:
+$$
+\lim_{h \to 0}\frac{f(x+h)-f(x)}{h}
+$$
+and funnily enough, while looking at a derivative as a limit is mostly useless for a person to calculate using, it's **perfect** for my over-glorified calculator (my computer), giving it $h=0.01$ (could go lower for more accuracy, but this works good enough), in the end this little idea I had led me to appreciate limits more, as well as the hard work put into actual derivative function calculators, ones that don't use my little workaround.
+
+Here's my derivative calculator script:\
+Feel free to change f(x) to be whatever function you'd like
+
+<CodeWindow packages={["matplotlib"]} code={
+`import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+# Feel free to change the domain or the step (warning: lower step means longer load times, and may crash the site if you're not careful)
+domain = [-2, 2]
+h = 0.01
+
+# Change here:
+def f(x):
+    return math.pow(x, 3) + math.pow(x, 2) + 1
+
+
+def f_dash(x):
+    return (f(x + h) - f(x)) / h
+
+length = int((domain[1]-domain[0])/h)
+x_array = np.linspace(domain[0], domain[1], length)
+y_array = np.zeros(length)
+y_dash_array = np.zeros(length)
+# You can enable double derivative too if you'd like by uncommenting their code
+# y_double_dash_array = np.zeros(length)
+
+
+
+
+for i, x in enumerate(x_array):
+    y_array[i] = f(x)
+    y_dash_array[i] = f_dash(x)
+    # y_double_dash_array[i] = f_dash(f_dash(x))
+
+plt.cla()
+plt.plot(x_array, y_array, color="blue")
+plt.plot(x_array, y_dash_array, color="orange")
+# plt.plot(x_array, y_double_dash_array, color="red")
+plt.show()
+`}/>
+
+## Result graph will show here:
+
+<div id="plot-target"/>
+
+<Link href={"/lab/derivative"}>Link to related lab entry</Link>

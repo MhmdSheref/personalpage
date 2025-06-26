@@ -73,6 +73,7 @@ export default function App({blogs}) {
                     content={`Hi, I'm Mohamed Sheref, also known online as "MhmdSheref" or "Sheref"
                      I am an engineering student at Cairo University, and this is my personal blog page
                      where I document all kinds of thoughts and experiments, with interactive labs when possible.`}/>
+                <meta name="google-site-verification" content="iUKYkMYgb4lqkNJogpv0RVlBFppBNzBxD0jF-SdFLTw" />
             </Head>
             <BlogPreview activeBlogId={activeBlogId} isShown={previewShown} setIsShown={setPreviewShown}
                          blogs={modifiedBlogs}/>

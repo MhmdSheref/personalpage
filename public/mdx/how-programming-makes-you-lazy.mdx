@@ -1,0 +1,33 @@
+---
+title: How programming makes you lazy
+date: 27/6/2025
+tags: [programming]
+links: []
+preventPreview: false
+color: "#47C5E6"
+---
+
+You know, from what I've experienced, having the ability to code actually *changes* the way you think about inconveniences. In a way, it makes you more lazy. While someone *normal* might be okay with doing repetitive tasks for 10 minutes, *"no!"* the programmer says, *"Instead, I'll spend an hour creating a script to automate this task!"*
+
+In actuality, while the programmer *could* do the more boring repetitive task, I think it's within human nature to try and escape tasks that seem too easy, the same way we escape tasks that seem too hard. The programmer finds their own balance of challenge and ease in these situations.
+
+Many times have I been the programmer in question, doing something more fun to me but generally using up more time than the task was worth. Sometimes, though, my quick and easy fix for an annoying issue ends up being more useful than I thought, and eventually it might even become so useful that I need it on the daily, in that case, it end up within my startup folder. That's how you know you've made it big as a script.
+
+One example of such a script originated as a troubleshooting step. Okay, let me explain. Ever since I built my PC, I've been having this weird bug where it sometimes, randomly, with no rhyme or reason, decides not to connect to my monitor. I tried and tried to find the reason, did driver updates, changed my cables, everything. As a last check, I wanted to see if the displays were actually being seen at all or not, so I cooked up this script:
+```py
+import wmi
+import os
+obj = wmi.WMI().Win32_PnPEntity(ConfigManagerErrorCode=0)
+
+displays = [x for x in obj if 'DISPLAY' in str(x)]
+
+if len(displays) <= 1:
+    os.popen("shutdown /r")
+```
+*If you don't see my display tell the computer to restart itself*
+
+When the display was working fine, it listed 2 items. When I unplugged it and ran the code, and then plugged it back in, it only read 1. So I left this script in my startup folder and waited to see if it would automatically restart next time, and.... It did. Next time my PC refused to give me a display signal, it restarted itself automatically as soon as it had noticed. And while that bit of troubleshooting still didn't get me anywhere, now at least I had a band-aid fix for this weird niche problem. It gave me no reason to remove it from startup again.
+
+Another general utility script in recent memory relates to my dislike of being interrupted clashing with my desire for easy printer access. As the computer man, I had been assigned the printer job, and thus given the printer to connect to my computer. Useful at first, then over time tinged with the sour taste of *"Oh, I have to print stuff for **other people** as well."*
+And after a particularly long day of my family asking me for prints, I decided that I'd had enough, so obviously, I got to coding...
+Line after line, and I had created my very own local print page, on this page you could upload your files for printing over the local network, and through some tools like SumatraPDF, I was able to automate the whole process of printing to just being an upload and a click away! No more interruptions to my valuable gaming time. Hurray!

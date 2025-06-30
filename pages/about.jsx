@@ -81,7 +81,9 @@ I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age=
                 <ul>
                     <li>Discord: <a target="_blank" rel="noopener noreferrer" href="https://discord.com/users/324519572806041600">@Sheref_</a></li>
                     <li>Github: <a target="_blank" rel="noopener noreferrer" href="https://github.com/MhmdSheref/">MhmdSheref</a></li>
+                    <li>Itch.io: <a target="_blank" rel="noopener noreferrer" href="https://mhmdsheref.itch.io/">MhmdSheref</a></li>
                     <li>Email: <a target="_blank" rel="noopener noreferrer" href="mailto:mhmdsherefio@gmail.com">mhmdsherefIO@gmail.com</a></li>
+
                 </ul>
                 <p>Now go read my blogs</p>
             </div>

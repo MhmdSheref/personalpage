@@ -8,6 +8,10 @@ body, html {
   background: #1e1e1e;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+}
+
 .AllContent {
   margin-top: 60px;
 }

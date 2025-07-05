@@ -1,6 +1,7 @@
 import SidebarEntry from "@/components/home/SidebarEntry.jsx"
 import styles from "@/styles/sidebar.module.css"
 import {useEffect, useState} from "react";
+import SubscribeForm from "@/components/SubscribeForm";
 export default function Sidebar({blogs, setActiveBlogId}) {
     const [sidebarShown, setSidebarShown] = useState();
     useEffect(() => {
@@ -23,6 +24,7 @@ export default function Sidebar({blogs, setActiveBlogId}) {
                         setActiveBlogId={setActiveBlogId}
                     />
                 )))}
+                <SubscribeForm/>
             </div>
         </aside>
     );

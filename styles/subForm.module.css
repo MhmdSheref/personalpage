@@ -1,0 +1,35 @@
+.SubscribeForm {
+    margin: 20px auto;
+    border-radius: 6px;
+}
+
+.SubscribeForm input[type="email"] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.6em;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.SubscribeForm button {
+    background-color: #663399;
+    font-family: inherit;
+    color: #fff;
+    border: none;
+    padding: 0.6em 1.2em;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.SubscribeForm button:hover {
+    filter: brightness(90%);
+    backdrop-filter: brightness(90%);
+}
+
+.status {
+    margin: 5px;
+    font-size: 0.95rem;
+}

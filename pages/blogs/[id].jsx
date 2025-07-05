@@ -9,6 +9,7 @@ import rehypeKatex from 'rehype-katex'
 import Head from "next/head";
 import Link from "next/link";
 import {getAllBlogs, getBlog} from "@/lib/populateBlogs";
+import BlogSidebar from "@/components/BlogSidebar";
 
 
 export const getStaticPaths = async () => {
@@ -73,43 +74,48 @@ export const getStaticProps = async ({ params }) => {
 
 export default function Blog({blog}) {
     return (
-        <div className={styles.container}>
-            <Head>
-                <title>{`${blog.title} | Mohamed Sheref`}</title>
-                <meta property="og:site_name" content="Mohamed Sheref" />
-                <meta property="og:title" content={blog.title} />
-                <meta property="og:description" content={blog.plaintext} />
-                <meta property="og:url" content="https://mhmdsheref.vercel.app/" />
-                <meta property="og:type" content="website" />
+        <div className={styles.Container}>
+            <div className={styles.content}>
+                <Head>
+                    <title>{`${blog.title} | Mohamed Sheref`}</title>
+                    <meta property="og:site_name" content="Mohamed Sheref" />
+                    <meta property="og:title" content={blog.title} />
+                    <meta property="og:description" content={blog.plaintext} />
+                    <meta property="og:url" content="https://mhmdsheref.vercel.app/" />
+                    <meta property="og:type" content="website" />
 
-                <meta name="description" content={blog.plaintext}/>
-                {
-                    blog.images.length > 0 &&
-                    <>
-                        <meta property="og:image" content={blog.images[0].img} />
-                        {/*<meta property="og:image:width" content="1200" />*/}
-                        {/*<meta property="og:image:height" content="630" />*/}
-                    </>
+                    <meta name="description" content={blog.plaintext}/>
+                    {
+                        blog.images.length > 0 &&
+                        <>
+                            <meta property="og:image" content={blog.images[0].img} />
+                            {/*<meta property="og:image:width" content="1200" />*/}
+                            {/*<meta property="og:image:height" content="630" />*/}
+                        </>
 
-                }
-            </Head>
+                    }
+                </Head>
 
-            <BlogArticle blog={blog}/>
-            {blog.linkObjs.length?
-                <nav>
-                    <h3>Related:</h3>
-                    <ul>
-                        {blog.linkObjs.map(link => (
-                            <li key={link.id}>
-                                <Link href={`/blogs/${link.id}`}>
-                                    {link.title}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                <BlogArticle blog={blog}/>
 
-                </nav> : null}
+            </div>
 
+            <BlogSidebar>
+                {blog.linkObjs.length?
+                    <nav>
+                        <h3>Related:</h3>
+                        <ul>
+                            {blog.linkObjs.map(link => (
+                                <li key={link.id}>
+                                    <Link href={`/blogs/${link.id}`}>
+                                        {link.title}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+
+                    </nav> : null}
+            </BlogSidebar>
         </div>
     );
 }

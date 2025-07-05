@@ -1,4 +1,10 @@
-.container {
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.content {
     padding: 40px;
     width: 60%;
     min-width: 880px;
@@ -9,8 +15,40 @@
     box-shadow: 0 -100px 5px 1px #191919;
 }
 
+/*----right sidebar----*/
+.Sidebar {
+    background: #262626;
+    padding: 0 25px;
+    min-width: 350px;
+    width: 21%;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1230px) {
+    .Container {
+        flex-direction: column;
+    }
+    .content {
+        margin-bottom: 0;
+    }
+    .Sidebar {
+        border-top: 1px solid #0e0e0e;
+        background: #191919;
+        width: 60%;
+        min-width: 880px;
+        margin: auto auto 300px;
+        padding-bottom: 50px;
+    }
+}
+
 @media screen and (max-width: 880px) {
-    .container {
+    .content {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .Sidebar {
         width: 100%;
         min-width: 0;
     }

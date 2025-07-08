@@ -78,7 +78,7 @@ export default function App({blogs}) {
             <BlogPreview activeBlogId={activeBlogId} isShown={previewShown} setIsShown={setPreviewShown}
                          blogs={modifiedBlogs}/>
             <ForceGraph blogs={modifiedBlogs} setActiveBlogId={handleActiveBlogId}/>
-            <Sidebar blogs={modifiedBlogs} setActiveBlogId={handleActiveBlogId}/>
+            <Sidebar blogs={modifiedBlogs}/>
         </>
     )
 }

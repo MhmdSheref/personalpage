@@ -2,10 +2,12 @@ import Tags from "@/components/Tags";
 import Image from "next/image";
 import React from "react";
 import styles from "@/styles/sidebar.module.css"
+import Link from "next/link";
 
-export default React.memo(function SidebarEntry({blog, setActiveBlogId}) {
+export default React.memo(function SidebarEntry({blog}) {
     return (
-        <section className={`${styles.SidebarEntry} ${blog.isNew? styles.new : null}`} onClick={()=>setActiveBlogId(blog.id)}>
+        <Link href={"/blogs/"+blog.id} style={{color:"inherit"}}>
+        <section className={`${styles.SidebarEntry} ${blog.isNew? styles.new : null}`}>
             <Image src={blog.images?.[0]?.img || "/T.svg"}
                    alt={blog.images?.[0]?.alt || "Cover Image"}
                    width={150} height={150}
@@ -15,6 +17,7 @@ export default React.memo(function SidebarEntry({blog, setActiveBlogId}) {
             <Tags tags={blog.tags.length? [blog.tags[0]] : []}/>
             <time>{blog.date}</time>
         </section>
+        </Link>
     );
 })
 

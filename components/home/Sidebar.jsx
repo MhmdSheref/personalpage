@@ -21,7 +21,6 @@ export default function Sidebar({blogs, setActiveBlogId}) {
                     <SidebarEntry
                         key={blogEntry.id}
                         blog = {blogEntry}
-                        setActiveBlogId={setActiveBlogId}
                     />
                 )))}
                 <SubscribeForm/>

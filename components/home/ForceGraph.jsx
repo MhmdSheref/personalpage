@@ -38,7 +38,7 @@ export default React.memo(function ForceGraph({blogs, setActiveBlogId}) {
     const handleNodeClick = node => {
         setActiveBlogId(node.id)
         fgRef.current.centerAt(node.x, node.y, 500);
-        fgRef.current.zoom(10-node.val+Math.random(), 500);
+        fgRef.current.zoom(8-node.val+Math.random(), 500);
     };
 
     const handleNodeHover = (node) => {

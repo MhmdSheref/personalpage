@@ -1,0 +1,78 @@
+---
+title: "Running AI locally: You can totally do it too!"
+date: 14/7/2025
+tags: [guide, programming]
+links: []
+preventPreview: false
+---
+AI, or Artificial Intelligence is a very broad term. But for this blog post, when I use “AI” I'm referencing generative machine learning based programs. Anyway, AI is everywhere now. It has become an inescapable part of the digital landscape. And while I do have some thoughts on the ethics of its data gathering and usage (more on this in a future blog, possibly?). It's still -no doubt- a useful tool to have in your arsenal. What if I told you that, by the end of this blog, you will be able to deploy your very own generative LLM (such as DeepSeek!). And run it locally, on your own device, without an internet connection. And it's not even hard! But first,
+## Why would I want to run AI locally?
+In my opinion, there are 3 main reasons you might want to have a local AI model on your device:
+1. Lowering the environmental impact you have when using LLMs and generative AI.
+2. Protecting your privacy and increasing your control over AI tools.
+3. It's cool AF to be able to say you're “*running DeepSeek locally*”.
+
+### Environmental Impact?
+AI services have had a huge surge in demand over the last few years. Which has led many tech companies to quickly rush forward with the creation of many AI data centers, enough to overwhelm their local water supplies and power grids.
+
+This rapid increase led to a significant jump in water usage, enough to affect the local wildlife and biodiversity. As well as rapid fluctuations in energy usage, overwhelming the power grids, and forcing them to employ non-sustainable and unclean generators.
+
+> “*The demand for new data centers cannot be met in a sustainable way. The pace at which companies are building new data centers means the bulk of the electricity to power them must come from fossil fuel-based power plants,*” says Bashir.\
+> [MIT News](https://news.mit.edu/2025/explained-generative-ai-environmental-impact-0117)
+
+You can decrease the need for such rapid expansion by deploying and inferencing with your models locally.
+### Privacy concerns?
+No matter how friendly your “Friendly AI assistant!” may seem; you must not forget that in the end, you are sending all your queries to a third party that may use that information as they see fit. If you require AI to help with jobs where confidentiality is critical, running your models locally is your best option. But even outside that scenario, using AI locally allows you to keep any personal info you might want to share with the model private.
+#### More Control?
+Yes, having your AI models running locally opens up a sea of possibilities. For one, you don't have to pay for API access when using it in your projects; you don't even need to have an internet connection once the model is downloaded! It opens up a whole different level of customization, allowing you to tweak and apply AI however you like.
+### It's cool?
+Yep, if you don't find the idea of having an approximation of all human knowledge on your device to talk to cool, then I don't know what else to tell you.¯\\\_(ツ)\_/¯
+## How do I run my own AI LLM locally?
+I'm going to be talking about deploying LLMs in this blog post. While the introduction above can be applied to many forms of generative AI which are equally usable locally, LLMs are surprisingly accessible on all forms of devices, even your phone can run a local LLM! I also believe that once you grapple with running an LLM locally, you should be able to run other non-language models with ease.
+### 1. Picking a platform
+To run an LLM locally, you first need to pick which platform your AI models will run on. All the platforms mentioned here include a built-in interface, allowing you to use them without needing an additional frontend.
+
+There are multiple options to choose from, I only have experience using llama.cpp and PocketPal. But based on your needs, you should check out the other options too. The information needed to install and run all of these platforms should be available in the links below:
+
+- **Windows/Linux/macOS:**
+    - [llama.cpp](https://github.com/ggml-org/llama.cpp/) (personal experience)
+    - [LM Studio](https://lmstudio.ai/)
+    - [ollama](https://ollama.com/)
+    - [GPT4All](https://gpt4all.io/)
+- **Android:**
+  - [PocketPal AI](https://play.google.com/store/apps/details?id=com.pocketpalai&pcampaignid=web_share) (personal experience)
+  - [Llamao](https://play.google.com/store/apps/details?id=com.sandoche.llamao&pcampaignid=web_share)
+- **IOS:**
+  - [LLM Farm](https://apps.apple.com/us/app/llm-farm/id6461209867)
+
+*Way too many llamas!*
+
+![Ollama logo = 100x100](/images/running-ai-locally/ollama.png)
+### 1.1 Interfaces (optional)
+One thing you could look further into at this point is integrations and interfaces, you might be interested in tools like [SillyTavern](https://sillytavernai.com/) if you're interested in world building and role-play with the LLM. Or you might be interested in something like [n8n](https://n8n.io/) for automation and Retrieval-augmented generation (RAG) tasks.
+### 2. Picking your model
+Now that you have a platform to run models on, you need to actually get the models that you're going to run. Most of the platforms mentioned above have tools to handle getting models for you. But there are still some concepts you should know before going and running these models. Let's take a look at this DeepSeek model listed on Hugging Face for [example](https://huggingface.co/bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF):\
+`DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf`
+#### Model Name:
+Of course, the first part of the name is used to signify what the name of that model is, here being `DeepSeek-R1`.
+#### Parameter Count:
+The `7B` in the name, meaning this model contains 7 billion parameters. In most cases, a higher parameter count means smarter model, but it also means bigger model. There's also `Distill-Qwen` here, but that's just a clever way DeepSeek was able to decrease their sizes using available models on the market. In short, they fine-tuned pre-existing models of various sizes based on the outputs of their 671B parameter model instead of having to train the different sizes from the ground up. It's not relevant for most use cases.
+#### Quantization:
+The `Q4_K_M`, which means this model is quant 4, medium. This is yet another method for decreasing the total size of the model, also affecting its quality. It is generally not recommended to go below Q4, with most recommending to stick to Q6 when possible.
+#### Model Extension:
+Finally, the model extension `.gguf`, being the model extension of choice for most LLM platforms, you might also come across extensions like `.ggml`, `.safetensors`, `.ckpt`, `.pt` and `.bin`. Bare `.bin` and `.pt` are looked at as unsafe, so try to stick to other safe formats when possible.
+
+#### Which size do I pick?
+Picking a model size depends largely on your system memory. You usually want to pick a model which is sized 80% or under your system memory. There's a distinction to be made here between RAM and VRAM. VRAM or (Video RAM) is the memory on your graphics card, while RAM (Random Access Memory) is your computer’s main memory. If you plan to run your model on your computer's graphics card only, then the number you care about is the VRAM, if you had 6gb of VRAM you would be searching for models sized 4.8gb or less. If you care more about quality and less about generation speed, then what you could do is add up your VRAM and your RAM, and pick a model based on that. If you do not own a GPU, then your only concern is your system RAM.
+#### General Guidance:
+I recommend you have at least 2 models available to you. One reasoning model, for harder more complex tasks. And another, non-reasoning model, for quicker language tasks, simple questions, or goofing around. I currently run DeepSeek R1 for reasoning, as well as Google's Gemma 3 for quicker tasks.
+
+Also, shout out to [Bartowski](https://huggingface.co/bartowski). His models are my number one go-to when I need a new model. He provides multiple parameter and quant options on all kinds of models, his recommended small models list is very nice if you're exploring available models.
+
+![Bartowski's current recommended models = 595x341](/images/running-ai-locally/recommended.png)
+
+[r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/) is another great community for sharing resources and staying up to date with the latest model releases and optimizations.
+## What are you waiting for?
+You now have the basics of running an LLM locally, as well as all the tools within reach to make it happen, so why not try it out? Grab one of the links provided and start your Local AI journey now! With this post + the guides on the platform website/github + r/LocalLLaMA, you've got all you need.
+
+![Do you think I am the coolest bestest blogger ever? Nah blud you're in 2nd place 🗣️🗣️. Then who is 1st place? Their time is yet to come... = 512x512](/images/running-ai-locally/bestest.png)

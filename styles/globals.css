@@ -1,5 +1,6 @@
 :root {
   --font-inter: 'Inter';
+  --font-fira: 'Fira Code';
 }
 
 body, html {
@@ -90,6 +91,20 @@ th {
 p, li {
   font-family: var(--font-inter), sans-serif;
   line-height: 1.3rem;
+}
+
+blockquote {
+  background: #0e0e0e;
+  border-left: solid 4px mediumpurple;
+  border-radius: 5px;
+  padding: 1px 10px;
+}
+
+code {
+  font-family: var(--font-fira), monospace;
+  color: #aaaaaa;
+  font-size: 0.9em;
+  background: #0e0e0e;
 }
 
 time {

@@ -10,6 +10,9 @@ import Head from "next/head";
 import Link from "next/link";
 import {getAllBlogs, getBlog} from "@/lib/populateBlogs";
 import BlogSidebar from "@/components/BlogSidebar";
+import { ReactCusdis } from 'react-cusdis'
+import { useRouter } from 'next/router'
+import {useEffect, useState} from "react";
 
 
 export const getStaticPaths = async () => {
@@ -73,6 +76,13 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export default function Blog({blog}) {
+    const router = useRouter()
+    const [url, setUrl] = useState('')
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setUrl(window.location.href)
+        }
+    }, [router.asPath]) // update when route changes
     return (
         <div className={styles.Container}>
             <div className={styles.content}>
@@ -97,6 +107,19 @@ export default function Blog({blog}) {
                 </Head>
 
                 <BlogArticle blog={blog}/>
+                <hr/>
+                <h2 style={{background:"#1C1B22", margin:"0 -40px", padding:"10px 40px"}}>Leave a comment:</h2>
+                <ReactCusdis
+                    attrs={{
+                        host: 'https://cusdis.com',
+                        appId: '5dd173c5-218f-45c1-b447-0a4b82e9cc8b',
+                        pageId: blog.id,
+                        pageTitle: blog.title,
+                        pageUrl: url,
+                        theme:"dark"
+                    }}
+                    style={{minHeight: "400px", display:"flex", padding:"30px", background:"#1C1B22", margin:"0 -40px -40px"}}
+                />
 
             </div>
 

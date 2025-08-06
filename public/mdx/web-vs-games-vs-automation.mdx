@@ -1,0 +1,31 @@
+---
+title: When is sleeping on the job allowed? | Programming for web vs games vs automation
+date: 6/8/2025
+tags: [programming]
+links: []
+preventPreview: false
+color: "#47C5E6"
+---
+The last few days have been rather eventful: I participated in the [GMTK 2025 Game Jam](https://itch.io/jam/gmtk-2025/rate/3776829) (blog coming soon) and started working on a few script ideas I've had for a few days. But one thing that I noticed during the jam was:
+> "Huh... I can use `time.sleep()` just fine in Python, and `Sleep(milliseconds);` in C++ but if I want to add a delay while working in Unity with C# I need to employ an IEnumerator Coroutine or make my own counter, and in JavaScript I need to use a `setTimeout()` or a `setInterval()`... Why is that?"
+
+I quickly understood why introducing delays in the middle of a game loop is usually a bad idea; you would be stalling everything else that needs to be done behind. But it still led me to wonder how things came to be this way? And how the 3 different disciplines of programming that I am familiar with - game dev, web dev, and automation scripting - deal with this.
+
+## Single tasking
+Running code synchronously and sequentially is the default behavior for most programming languages. Starting from a blank slate means you have full control of the main thread and can pause or block it as much as you'd like. This is how it is in most scripts that are meant to fulfil a single function, giving you your output at the end. In these cases, adding a delay only really affects the code that you yourself are writing, therefore, you're the only one responsible for your delays.
+
+## Multi tasking
+### Game Loop
+On the other hand, when you have something like a game engine, it doesn't only need to run your code, but it also needs to handle inputs, run physics simulations, render frames, and make sure it can consistently do that in as little time as possible; allowing your game to update at least 60 times per second. So obviously, a delay every single time you want to update a frame, even a miniscule one, can be felt.
+
+There are multiple ways you can go about creating a delayed task in a game dev context. For one: You can create a `timeSinceLastTriggered` variable, check if the current time (usually time since program execution such as Unity's `Time.fixedTime`) is `x` seconds more than `timeSinceLastTriggered` and if that's the case, you update `timeSinceLastTriggered` to reflect the new current time.
+
+Alternatively, game engines like Unity and Godot have functionality that makes this process less tedious, such as Unity's Coroutines which allow you to set delays, and Godot's timer node which calls a function after a set time which can be adjusted through code or in the inspector.
+
+### JavaScript's Event Loop
+Funnily enough, JavaScript in the browser also has its own loop structure. Thinking of how I work with vanilla JavaScript, I either write code to be executed when the website is loaded, or I assign callbacks to event listeners or `setTimeout()`s and forget about it. Whereas in the process of game development, you're very aware of the frame cycle, JavaScript's event loop works very well on its own even if you don't want to think about it. (If you're interested [this video](https://youtu.be/cCOL7MC4Pl0?si=RqyELHvol_Ilnm-l) explains it better than I ever could.)
+
+JavaScript contains multiple ways to schedule tasks to be done, each with their own priority and order. The easiest way to delay something in JavaScript is through *scheduling* a function to be run when a certain amount of time has passed.
+
+## Closing Thoughts
+While the differences didn't turn out as **stark** as I had thought behind the scenes, they definitely have an effect on how you think and interact with the code. Both Unity's C# implementation and JavaScript's use loops behind the scenes, JavaScript exposes you to a lot of callback functions while Unity just changes certain parameters which you have to check for manually. Having these methods in your toolbox is essential when writing your own asynchronous logic, when you eventually have to build your own loops.

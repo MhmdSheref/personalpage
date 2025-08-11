@@ -2,6 +2,7 @@ import FlowField from "@/components/lab/labContent/FlowField";
 import styles from "@/styles/lab.module.css";
 import { useState } from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function FlowFieldController() {
     const [color, setColor] = useState("#ff0000");
@@ -17,6 +18,9 @@ export default function FlowFieldController() {
 
     return (
         <>
+            <Head>
+                <title>Flow Field | Mohamed Sheref</title>
+            </Head>
             <div className={styles.canvasContainer}>
                 <FlowField
                     key={resetKey} // forces reset when needed

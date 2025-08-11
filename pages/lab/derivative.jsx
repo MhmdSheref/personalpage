@@ -1,8 +1,12 @@
 import CodeWindow from "@/components/lab/CodeWindow";
 import Link from "next/link";
+import Head from "next/head";
 export default function derivative() {
     return (
         <>
+            <Head>
+                <title>Derivative calculator | Mohamed Sheref</title>
+            </Head>
             <CodeWindow packages={["matplotlib"]} code={
                 `import matplotlib.pyplot as plt
 import numpy as np

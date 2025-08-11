@@ -1,0 +1,79 @@
+---
+title: "Glitch art: The freedom of breaking the rules"
+date: 12/8/2025
+tags: [design, programming]
+links: []
+preventPreview: false
+---
+Whenever I'd play video games, my brain would always eventually wander as to how if possible I could break this game. Reaching an area the developer didn't intend me to, or encountering visual bugs that made the previously clean and polished UIs unusable. These little moments always inspired something more in me, through them, you could get a glimpse at the hidden underlying mechanics that caused such an error to be possible.
+This desire to "break" things didn't start with video games though. Even as a child, if a toy did something I didn't understand, my first though was to break it open and see how it does that thing; To -now obvious- permanent consequences.
+
+These experiences left me with more than just answers to my passing curiosity though; They embedded in me a liking for art which is broken. Art that is created when an artist is given a digital sledgehammer and allowed free rein on the canvas.
+
+## Glitch Art
+Glitch art is exactly as it seems, it is art that seeks to use or simulate digital "glitches" or errors. Which is often paired with Cyberpunk or Vaporwave themes or aesthetics.
+
+Glitch art is as broad as technology is flawed.  Even before digital media, artists would seek and embrace the errors in their medium, such as solarization photography,  painting on film tapes,  and signal manipulation, even with physical mediums; movements such as the Expressionist movement focused more on eliciting emotions through their art rather than focusing on conveying the world as is, often distorting or exaggerating it to illicit emotions.
+
+> Whatever you now find weird, ugly, uncomfortable and nasty about a new medium will surely become its signature. CD distortion, the jitteriness of digital video, the crap sound of 8-bit - all of these will be cherished and emulated as soon as they can be avoided. It’s the sound of failure: so much modern art is the sound of things going out of control, of a medium pushing to its limits and breaking apart.
+> ― Brian Eno, [A Year With Swollen Appendices](https://www.goodreads.com/work/quotes/154541)
+
+## Glitch Art: Some of My Approaches
+To demonstrate some of the glitch art approaches I know of (there are definitely more ways out there), I will be using this picture of a cute kitten
+
+![a cute white kitten with blue eyes resting on a bed frame](/images/glitch-art/bubbles.jpg)
+
+Her name is bubbles, how I got to meet bubbles is a long story, but she got to live with us for a period of time. Sorry for what this in advance, bubbles.
+### Databending
+Databending relies on modifying the bytes "data" of a file through software which it is not meant for, per example, editing an image file inside Audacity, or playing around the bytes of a file in a hex editor. It doesn't even have to be limited to images, but I haven't tried anything other than images out yet, other formats are understandably more complicated.
+
+Due to the differences in storage methods used in each format, you can get very different visuals and effects based on what format of file you play around with.
+
+Here's an example of a JPG file tampered-with in [HxD](https://mh-nexus.de/en/programs.php), a hex editor:
+
+![that same image of the kitten shifted horizontally and in green and red](/images/glitch-art/bubbles-data-JPG.jpg)
+
+Here's a GIF which had its color table randomized, also in HxD:
+
+![kitten with weird psychedelic colors, shifted to the right. noise covering the top half of the image](/images/glitch-art/bubbles-data-GIF.jpg)
+
+And while BMP files are boring to play with in hex editors (since the bits represent the colors directly, you tend to get a lot of noise or solid colors). They are very fun to edit in Audacity:
+
+![picture of the kitten with 2 repeats behind and after it, all colored very strangely](/images/glitch-art/bubbles-data-BMP.jpg)
+
+So long as you keep the headers safe (or at least copy them back in from working files), and keep the file size the same, you're in for a fun time.
+
+### Pixel sorting
+Pixel sorting is how I first encountered this kind of glitch art (Through [this video](https://youtu.be/HMmmBDRy-jE?si=USDGDJYN8RX7SkNQ)), manipulating pixels in a very simple way that really doesn't make sense in the context of an image.
+
+Pixel sorting is, to put it simply, grouping pixels and sorting them based on one of their values. The most popular take I've seen on pixel sorting is separating sections based on edge detection, then sorting them horizontally or vertically based on their value, or brightness. That isn't the only way though; when I first experimented with the idea, I also found interesting effects by randomizing the separation of these sections.
+[Here's an old script I made to sort images, it's a mess, but I still use it to this day](https://github.com/MhmdSheref/Pixel-Sorter)
+
+![kitten shape vaguely visible, sorted colors lightest to darkest](/images/glitch-art/bubbles-sorted.jpg)
+
+When I grow up, I'm gonna tell my kids this is what bubble sort is :]
+
+Pixel sorting also kind of fits under procedural editing, it relies less on random numbers though.
+
+### Procedural Editing
+I'm not sure how much of an actual category this is, but it's one of the methods I really like using when it comes to making effects. When you think about it, all digital editing tools are just using code too. So I thought to myself, if I feel like I'm missing a feature, what's stopping me from coding it myself? The answer is: basically nothing.
+
+After this realization, I became very aware of the kinds of effects I feel like I'm missing when I make glitchy images. Which kind of slots it into winging it too... Whatever, categories are a social construct anyway. ¯\\\_(ツ)\_/¯
+
+I grouped up some effects that I thought would be interesting to have and, today, I present to you:
+<Link href="/lab/glitch">My very own glitchifier toolset!</Link>
+I started by adding a few tools I think would be interesting to use in my art, and I plan on adding more as I find tools I'm lacking.
+
+The very first set of effects Includes an offset glitch effect generator, it takes croppings from the original image and places them at a certain offset, where height, width, and offset are all customizably randomized. As well as a noise gradient generator that works with both RGB and HSV color selection. While this tool exists on Photoshop, I haven't seen it on other image editing tools, neither have I seen an online version of it, so I made my own.
+
+![kitten formed with rectangular pieces like paper shredding](/images/glitch-art/bubbles-offset.png)
+
+### Winging it
+Arguably, the method least true to glitch art, but nonetheless, the one I find most freeing. Glitch and degradation effects can just as easily be created by just playing around with an image editor! Other than the various distort and pixelate effects you have, sometimes a hue shift, or a hard mix color overlay, are interesting in their own right. This method touches on my experiences as a little kid. I'd download professional tools like Photoshop (totally legally fr!!) and just try out all the different tools. It felt like a treasure hunt every time. And for me, that's still well within the spirit of glitch art.
+
+![black and white image with the kitten in the middle, now purple, with red outlines and a red iris, highly distorted](/images/glitch-art/bubbles-wing.jpg)
+
+## Im glitchin it
+At last, I'd like to return to the reason I do all of this again. Through glitch art, I get to present my work almost as homage to the digital world I was raised up in. By acknowledging and even highlighting its flaws, I open a window for the person looking at my art, allowing them to wonder how the image reached such a state. In this little sandbox where almost anything goes, I can experiment with absurd changes as much as I want without any long-lasting negative consequences. It is very freeing, breaking the rules whether it comes to conventional graphic design, or the expected method to interact with files. I also cannot hide the fact that I like how vibrant and contrasting the end results often turn out to be.
+
+<Link href="/lab/glitch">Related Lab Entry</Link>

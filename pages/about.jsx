@@ -26,7 +26,7 @@ export default function About() {
                 Hi
 I exist
 
-I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age===18?"n":""} ${age}-year-old Engineering student at Cairo University who is deeply fascinated by these wonderful machines we call computers.
+I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age===18?"n":""} ${age}-year-old Biomedical Engineering student at Cairo University who is deeply fascinated by these wonderful machines we call computers.
 `} />
                 <meta property="og:url" content="https://mhmdsheref.vercel.app/" />
                 <meta property="og:type" content="website" />
@@ -35,7 +35,7 @@ I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age=
                 Hi
 I exist
 
-I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age===18?"n":""} ${age}-year-old Engineering student at Cairo University who is deeply fascinated by these wonderful machines we call computers.
+I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age===18?"n":""} ${age}-year-old Biomedical Engineering student at Cairo University who is deeply fascinated by these wonderful machines we call computers.
 `}/>
                 <meta property="og:image" content="https://github.com/mhmdsheref.png" />
                 <meta property="og:image:width" content="128" />
@@ -58,7 +58,7 @@ I'm Mohamed Sheref, also known online as MhmdSheref or just Sheref. I am a${age=
                     I'm <span className={styles.em}> Mohamed Sheref</span>, also known online as
                     <span className={styles.em}> MhmdSheref </span> or just
                     <span className={styles.em}> Sheref</span>.
-                    I am a{age===18?"n":""} {age}-year-old Engineering student at Cairo University who is deeply
+                    I am a{age===18?"n":""} {age}-year-old Biomedical Engineering student at Cairo University who is deeply
                     fascinated by these wonderful machines we call computers.
                 </p>
                 <p>

@@ -7,7 +7,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
 
-export default function DynamicBlogArticle({ blog , isPreview }) {
+export default function DynamicBlogArticle({ blog, isPreview }) {
     const [mdxContent, setMdxContent] = useState(null);
     useEffect(() => {
         setMdxContent(null)
@@ -17,7 +17,7 @@ export default function DynamicBlogArticle({ blog , isPreview }) {
             } else if (blog.id) {
                 const res = await fetch(`/mdx/${blog.id}.mdx`);
                 const raw = await res.text();
-                const {  content } = matter(raw);
+                const { content } = matter(raw);
 
 
                 let preview
@@ -40,6 +40,7 @@ export default function DynamicBlogArticle({ blog , isPreview }) {
                         remarkPlugins: [remarkGfm, remarkMath],
                         rehypePlugins: [rehypeKatex],
                     },
+                    blockJS: false,
                 });
 
 
@@ -49,10 +50,10 @@ export default function DynamicBlogArticle({ blog , isPreview }) {
         loadMdx();
     }, [blog]);
 
-    if (!mdxContent) return <article><h1 style={{color:"#a9a9a9"}}>Loading article...</h1></article>;
+    if (!mdxContent) return <article><h1 style={{ color: "#a9a9a9" }}>Loading article...</h1></article>;
 
     return (
-        <BlogArticle blog={{...blog, content:mdxContent}}/>
+        <BlogArticle blog={{ ...blog, content: mdxContent }} />
     );
 }
 

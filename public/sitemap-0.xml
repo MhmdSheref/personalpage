@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://mhmdsheref.vercel.app</loc><lastmod>2026-02-13T22:58:40.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/about</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/lab</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/lab/derivative</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/lab/flowfield</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/lab/glitch</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/blog-about-blogs</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/creating-art-with-code</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/glitch-art</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/gmtk-game-jam-2025</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/how-programming-makes-you-lazy</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/introduction</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/running-ai-locally</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/the-average-person</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/the-metro</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/web-vs-games-vs-automation</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mhmdsheref.vercel.app/blogs/why-do-i-code</loc><lastmod>2026-02-13T22:58:40.690Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/about</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/lab</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/lab/derivative</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/lab/flowfield</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/lab/glitch</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/blog-about-blogs</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/creating-art-with-code</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/glitch-art</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/gmtk-game-jam-2025</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/how-programming-makes-you-lazy</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/introduction</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/running-ai-locally</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/the-average-person</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/the-metro</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/web-vs-games-vs-automation</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mhmdsheref.vercel.app/blogs/why-do-i-code</loc><lastmod>2026-02-13T23:12:19.722Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

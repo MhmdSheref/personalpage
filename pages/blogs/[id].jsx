@@ -8,11 +8,11 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import Head from "next/head";
 import Link from "next/link";
-import {getAllBlogs, getBlog} from "@/lib/populateBlogs";
+import { getAllBlogs, getBlog } from "@/lib/populateBlogs";
 import BlogSidebar from "@/components/BlogSidebar";
 import { ReactCusdis } from 'react-cusdis'
 import { useRouter } from 'next/router'
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 
 export const getStaticPaths = async () => {
@@ -45,10 +45,10 @@ export const getStaticProps = async ({ params }) => {
     let allLinks = [];
     blogs.forEach((searchBlog => {
         if (searchBlog.links.includes(blog.id)) {
-            allLinks.push({title: searchBlog.title, id:searchBlog.id})
+            allLinks.push({ title: searchBlog.title, id: searchBlog.id })
         }
         if (blog.links.includes(searchBlog.id)) {
-            allLinks.push({title: searchBlog.title, id:searchBlog.id})
+            allLinks.push({ title: searchBlog.title, id: searchBlog.id })
         }
     }))
 
@@ -60,8 +60,8 @@ export const getStaticProps = async ({ params }) => {
         mdxOptions: {
             remarkPlugins: [remarkGfm, remarkMath],
             rehypePlugins: [rehypeKatex],
-
         },
+        blockJS: false,
     })
     return {
         props: {
@@ -75,7 +75,7 @@ export const getStaticProps = async ({ params }) => {
     }
 };
 
-export default function Blog({blog}) {
+export default function Blog({ blog }) {
     const router = useRouter()
     const [url, setUrl] = useState('')
     useEffect(() => {
@@ -94,7 +94,7 @@ export default function Blog({blog}) {
                     <meta property="og:url" content="https://mhmdsheref.vercel.app/" />
                     <meta property="og:type" content="website" />
 
-                    <meta name="description" content={blog.plaintext}/>
+                    <meta name="description" content={blog.plaintext} />
                     {
                         blog.images.length > 0 &&
                         <>
@@ -106,9 +106,9 @@ export default function Blog({blog}) {
                     }
                 </Head>
 
-                <BlogArticle blog={blog}/>
-                <hr/>
-                <h2 style={{background:"#1C1B22", margin:"0 -40px", padding:"10px 40px"}}>Leave a comment:</h2>
+                <BlogArticle blog={blog} />
+                <hr />
+                <h2 style={{ background: "#1C1B22", margin: "0 -40px", padding: "10px 40px" }}>Leave a comment:</h2>
                 <ReactCusdis
                     attrs={{
                         host: 'https://cusdis.com',
@@ -116,15 +116,15 @@ export default function Blog({blog}) {
                         pageId: blog.id,
                         pageTitle: blog.title,
                         pageUrl: url,
-                        theme:"dark"
+                        theme: "dark"
                     }}
-                    style={{minHeight: "400px", display:"flex", padding:"30px", background:"#1C1B22", margin:"0 -40px -40px"}}
+                    style={{ minHeight: "400px", display: "flex", padding: "30px", background: "#1C1B22", margin: "0 -40px -40px" }}
                 />
 
             </div>
 
             <BlogSidebar>
-                {blog.linkObjs.length?
+                {blog.linkObjs.length ?
                     <nav>
                         <h3>Related:</h3>
                         <ul>
